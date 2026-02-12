@@ -1,11 +1,16 @@
 (() => {
-  const STORAGE_KEY = "lh4h_theme";
+  const STORAGE_KEY = "theme";
+  const LEGACY_STORAGE_KEY = "lh4h_theme";
   const THEMES = new Set(["dark", "light"]);
 
   const getStoredTheme = () => {
     try {
       const value = window.localStorage.getItem(STORAGE_KEY);
-      return THEMES.has(value) ? value : null;
+      if (THEMES.has(value)) {
+        return value;
+      }
+      const legacyValue = window.localStorage.getItem(LEGACY_STORAGE_KEY);
+      return THEMES.has(legacyValue) ? legacyValue : null;
     } catch {
       return null;
     }
@@ -14,9 +19,17 @@
   const setStoredTheme = (theme) => {
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
+      window.localStorage.setItem(LEGACY_STORAGE_KEY, theme);
     } catch {
       // Ignore persistence errors.
     }
+  };
+
+  const getSystemTheme = () => {
+    if (typeof window.matchMedia !== "function") {
+      return "dark";
+    }
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   };
 
   const applyTheme = (theme) => {
@@ -28,7 +41,7 @@
     });
   };
 
-  const initialTheme = getStoredTheme() || "dark";
+  const initialTheme = getStoredTheme() || getSystemTheme() || "dark";
   applyTheme(initialTheme);
 
   document.addEventListener("DOMContentLoaded", () => {
