@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boston Dershane Evi Projesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0a101b;
+      --ink:#f6f3eb;
+      --muted:#d8d2c6;
+      --muted-soft:rgba(216,210,198,.72);
+      --gold-1:#f8d287;
+      --gold-2:#e3b85e;
+      --gold-3:#c6953d;
+      --badge-bg:rgba(248,210,135,.14);
+      --badge-br:rgba(248,210,135,.35);
+      --btn-bg:#f1c974;
+      --btn-ink:#231a0b;
+      --bar-track:rgba(255,255,255,.14);
+      --radius:14px;
+      --container:700px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background-image:url("Gemini_Generated_Image_kdh16kdh16kdh16k.png");
+      background-size:cover;
+      background-position:62% 46%;
+      isolation:isolate;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(5,9,16,.86) 0%, rgba(6,11,20,.75) 40%, rgba(7,12,22,.52) 62%, rgba(10,16,27,.42) 100%),
+        linear-gradient(180deg, rgba(5,10,18,.32) 0%, rgba(5,10,18,.55) 100%);
+      z-index:0;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-10%;
+      background:
+        radial-gradient(circle at 70% 45%, rgba(244,190,92,.12) 0%, rgba(244,190,92,0) 32%),
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 40%),
+        repeating-linear-gradient(120deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px);
+      mix-blend-mode:screen;
+      opacity:.38;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .content{
+      position:relative;
+      z-index:2;
+      width:min(var(--container), calc(100% - 3rem));
+      margin-left:clamp(1rem,6vw,5rem);
+      transform:translateY(-5svh);
+    }
+
+    .kicker{
+      margin:0 0 1rem;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      font-weight:600;
+      font-size:.78rem;
+      color:rgba(248,210,135,.92);
+    }
+
+    h1{
+      margin:.15rem 0 1.15rem;
+      font-size:clamp(2rem,6.2vw,4.3rem);
+      line-height:1.03;
+      letter-spacing:-.02em;
+      font-weight:700;
+      max-width:12.6ch;
+      text-wrap:balance;
+    }
+
+    .sub{
+      margin:0 0 1.6rem;
+      font-size:clamp(1rem,1.9vw,1.24rem);
+      line-height:1.55;
+      color:var(--muted);
+      max-width:62ch;
+    }
+    .sub span{color:var(--muted-soft)}
+
+    .cta-row{
+      display:flex;
+      align-items:center;
+      gap:.8rem;
+      margin:0 0 1.1rem;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:.66rem 1.15rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background:linear-gradient(180deg, #f8d995 0%, var(--btn-bg) 100%);
+      color:var(--btn-ink);
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.01em;
+      transition:transform .26s ease, box-shadow .26s ease, filter .26s ease;
+      box-shadow:0 10px 28px rgba(230,176,77,.28), inset 0 1px 0 rgba(255,255,255,.55);
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 34px rgba(230,176,77,.34), inset 0 1px 0 rgba(255,255,255,.65);
+      filter:saturate(1.03);
+    }
+    .btn:focus-visible{
+      outline:2px solid #ffe2a0;
+      outline-offset:2px;
+    }
+
+    .progress2{
+      max-width:min(760px, 92vw);
+      margin-top:.35rem;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .progress2__row{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom:.62rem;
+    }
+
+    .progress2__metric{
+      display:flex;
+      flex-direction:column;
+      gap:.22rem;
+      min-width:0;
+    }
+
+    .progress2__label{
+      margin:0;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(232,226,215,.74);
+      font-weight:600;
+    }
+
+    .progress2__value{
+      margin:0;
+      font-size:clamp(1.35rem,2.7vw,1.75rem);
+      line-height:1.05;
+      color:#e4ded2;
+      font-weight:650;
+      letter-spacing:-.01em;
+    }
+
+    .progress2__targetChip{
+      padding:.5rem .78rem;
+      border-radius:999px;
+      background:rgba(248,210,135,.14);
+      border:1px solid rgba(248,210,135,.48);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .progress2__targetChip .progress2__label{
+      color:rgba(248,220,155,.9);
+    }
+
+    .progress2__targetChip .progress2__value{
+      color:#f7dfad;
+      font-weight:700;
+    }
+
+    .progress2__track{
+      position:relative;
+      width:100%;
+      height:11px;
+      border-radius:999px;
+      overflow:visible;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .progress2__fill{
+      position:relative;
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, #d9a94f 0%, #e7bc67 100%);
+      border:1px solid rgba(239,197,105,.45);
+      transition:width 1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .progress2__fill::after{
+      content:"";
+      position:absolute;
+      right:-4px;
+      top:50%;
+      width:8px;
+      height:8px;
+      transform:translateY(-50%);
+      border-radius:50%;
+      background:#f0cb80;
+      box-shadow:0 0 0 1px rgba(10,16,27,.3);
+      opacity:.85;
+    }
+
+    .progress2__fill[style*="width: 0"]::after{
+      opacity:0;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(12px);
+      transition:opacity .65s ease, transform .65s ease;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width:900px){
+      .hero{background-position:67% 44%}
+      .content{
+        width:min(var(--container), calc(100% - 2.2rem));
+        margin-left:1.1rem;
+        transform:translateY(-2.5svh);
+      }
+      h1{font-size:clamp(1.85rem,8.3vw,3.2rem)}
+    }
+
+    @media (max-width:520px){
+      .hero{background-position:71% 43%}
+      .content{transform:translateY(-1svh)}
+      .kicker{font-size:.72rem}
+      .sub{font-size:.98rem}
+      .progress2__row{align-items:flex-start; gap:.75rem}
+      .progress2__value{font-size:1.28rem}
+      .progress2__targetChip{padding:.46rem .7rem}
+      .progress2__track{height:10px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .btn,.progress2__fill,.reveal{transition:none !important}
+      .reveal{opacity:1; transform:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-label="Boston Dershane Evi Projesi kahraman alanı">
+    <section class="content">
+      <p class="kicker reveal">BOSTON DERSHANE EVİ PROJESİ</p>
+
+      <h1 class="reveal" style="transition-delay:.06s">
+        Boston’da cemaat var;<br>kalıcı dershane evi yok.<br>Bunu birlikte değiştirelim.
+      </h1>
+
+      <p class="sub reveal" style="transition-delay:.12s">
+        Boston, öğrencilerin ve ilim insanlarının buluştuğu bir merkez. Bu merkezde kalıcı bir dershane eviyle süreklilik kurmak istiyoruz. <span>Bu ev, Boston’daki okumalar için süreklilik ve istikrar olacak.</span>
+      </p>
+
+      <div class="cta-row reveal" style="transition-delay:.18s">
+        <a class="btn" href="#" aria-label="Katkı Yap">Katkı Yap</a>
+      </div>
+
+      <div class="progress2 reveal" style="transition-delay:.24s">
+        <div class="progress2__row">
+          <div class="progress2__metric">
+            <p class="progress2__label">Toplanan</p>
+            <p class="progress2__value" id="currentValue">$214,600</p>
+          </div>
+          <div class="progress2__metric progress2__targetChip">
+            <p class="progress2__label">Hedef</p>
+            <p class="progress2__value" id="targetValue">$855,000</p>
+          </div>
+        </div>
+        <div
+          class="progress2__track"
+          role="progressbar"
+          aria-label="Bağış ilerleme durumu"
+          aria-valuemin="0"
+          aria-valuemax="855000"
+          aria-valuenow="214600"
+        >
+          <div class="progress2__fill" id="progressFill"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const target = 855000;
+      const current = 214600;
+      const percent = Math.min((current / target) * 100, 100);
+
+      const fmt = new Intl.NumberFormat("en-US");
+      const currentValue = document.getElementById("currentValue");
+      const targetValue = document.getElementById("targetValue");
+      const progressFill = document.getElementById("progressFill");
+      const bar = document.querySelector(".progress2__track");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      currentValue.textContent = `$${fmt.format(current)}`;
+      targetValue.textContent = `$${fmt.format(target)}`;
+
+      bar.setAttribute("aria-valuemax", String(target));
+      bar.setAttribute("aria-valuenow", String(current));
+      bar.setAttribute("aria-valuetext", `$${fmt.format(current)} toplandı, hedef $${fmt.format(target)}`);
+
+      if (reducedMotion) {
+        progressFill.style.width = `${percent}%`;
+      } else {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            progressFill.style.width = `${percent}%`;
+          });
+        });
+      }
+
+      if (!reducedMotion) {
+        document.querySelectorAll(".reveal").forEach((el, i) => {
+          setTimeout(() => el.classList.add("is-visible"), 70 + i * 90);
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+      }
+    })();
+  </script>
+</body>
+</html>
