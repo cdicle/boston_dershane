@@ -110,12 +110,12 @@
       line-height: 1.03;
       letter-spacing: -0.02em;
       font-weight: 700;
-      max-width: 12.6ch;
-      text-wrap: balance;
+      max-width: 17ch;
+      text-wrap: pretty;
     }
 
     .supporting {
-      margin: 0 0 1.5rem;
+      margin: 0 0 0.78rem;
       font-size: clamp(1rem, 1.9cqw, 1.24rem);
       line-height: 1.55;
       color: var(--muted);
@@ -123,21 +123,23 @@
     }
 
     .metrics {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 0.72rem;
-      max-width: 100%;
-      padding: 0.38rem 0.45rem;
+      width: fit-content;
+      max-width: 56ch;
+      margin-top: 0.2rem;
+      padding: 0.34rem 0.4rem;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(8, 13, 22, 0.44);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(8, 13, 22, 0.3);
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
 
     .metric {
       display: inline-flex;
-      align-items: center;
+      align-items: baseline;
       gap: 0.5rem;
       line-height: 1;
     }
@@ -164,9 +166,8 @@
     .metric--target {
       padding: 0.4rem 0.68rem;
       border-radius: 999px;
-      background: rgba(248, 210, 135, 0.14);
-      border: 1px solid rgba(248, 210, 135, 0.48);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      background: rgba(248, 210, 135, 0.11);
+      border: 1px solid rgba(248, 210, 135, 0.38);
     }
 
     .metric--target .metric__label {
@@ -184,8 +185,9 @@
     }
 
     .metric--raised .metric__label {
-      color: rgba(218, 210, 195, 0.72);
-      font-size: 0.68rem;
+      color: rgba(218, 210, 195, 0.62);
+      font-size: 0.64rem;
+      font-weight: 500;
     }
 
     .metric--raised .metric__value {
@@ -227,14 +229,20 @@
       display: grid;
       grid-template-columns: 220px minmax(0, 1fr);
       align-items: baseline;
-      min-height: 44px;
-      gap: 18px;
+      min-height: 40px;
+      gap: 14px;
+      border-top: 0;
+      padding: 4px 0;
+    }
+
+    .row:first-of-type {
       border-top: 1px solid rgba(255, 255, 255, 0.11);
-      padding: 5px 0;
+      padding-top: 7px;
     }
 
     .row:last-of-type {
       border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      padding-bottom: 7px;
     }
 
     .label {
@@ -257,7 +265,7 @@
     .note,
     .trust,
     .site {
-      margin: 9px 0 0;
+      margin: 8px 0 0;
       font-size: 0.86rem;
       line-height: 1.38;
       color: var(--muted);
@@ -310,7 +318,7 @@
     <div class="content">
       <section class="left-col">
         <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
-        <h1>Boston’da cemaat var; kalıcı dershane evi yok. Bunu birlikte değiştirelim.</h1>
+        <h1>Boston’da cemaat var;<br />kalıcı dershane evi yok.<br />Bunu birlikte değiştirelim.</h1>
         <p class="supporting">Boston, tarihi boyunca ve bugün de ülkeye birçok anlamda yön veren bir merkez. Burada güçlü bir cemaat var; fakat bu potansiyeli harekete geçirecek kalıcı bir dershane evi eksik.</p>
 
         <div class="metrics" aria-label="Proje durumu">
