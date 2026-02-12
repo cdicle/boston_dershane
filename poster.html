@@ -326,9 +326,16 @@
       filter: saturate(0.92) brightness(0.94) contrast(0.92);
     }
   </style>
+  <link rel="stylesheet" href="./assets/theme.css" />
 </head>
 <body>
+  <div class="theme-toggle" role="group" aria-label="Theme switcher">
+    <button class="theme-toggle__btn" type="button" data-set-theme="dark" aria-pressed="true">Dark</button>
+    <button class="theme-toggle__btn" type="button" data-set-theme="light" aria-pressed="false">Light</button>
+  </div>
+
   <article class="poster" role="img" aria-label="Boston Dershane Evi premium WhatsApp posteri">
+    <div class="bg" aria-hidden="true"></div>
     <div class="content">
       <section class="left-col">
         <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
@@ -382,5 +389,6 @@
       </section>
     </div>
   </article>
+  <script src="./assets/theme.js"></script>
 </body>
 </html>

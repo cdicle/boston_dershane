@@ -632,9 +632,16 @@
       .reveal{opacity:1; transform:none}
     }
   </style>
+  <link rel="stylesheet" href="./assets/theme.css" />
 </head>
 <body>
+  <div class="theme-toggle" role="group" aria-label="Theme switcher">
+    <button class="theme-toggle__btn" type="button" data-set-theme="dark" aria-pressed="true">Dark</button>
+    <button class="theme-toggle__btn" type="button" data-set-theme="light" aria-pressed="false">Light</button>
+  </div>
+
   <main class="hero" aria-label="Boston Dershane Evi Projesi kahraman alanı">
+    <div class="bg" aria-hidden="true"></div>
     <section class="content">
       <p class="kicker reveal">BOSTON DERSHANE EVİ PROJESİ</p>
 
@@ -827,6 +834,7 @@
 
   <div class="toast" id="copyToast" role="status" aria-live="polite">Kopyalandı</div>
 
+  <script src="./assets/theme.js"></script>
   <script>
     (() => {
       const target = 855000;

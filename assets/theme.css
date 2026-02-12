@@ -1,0 +1,379 @@
+:root,
+:root[data-theme="dark"] {
+  --bg-image: url("../Gemini_Generated_Image_kdh16kdh16kdh16k.png");
+  --bg-filter: brightness(1) contrast(1) saturate(1);
+  --bg-veil:
+    linear-gradient(90deg, rgba(5, 9, 16, 0.86) 0%, rgba(6, 11, 20, 0.75) 40%, rgba(7, 12, 22, 0.52) 62%, rgba(10, 16, 27, 0.42) 100%),
+    linear-gradient(180deg, rgba(5, 10, 18, 0.32) 0%, rgba(5, 10, 18, 0.55) 100%);
+  --bg-vignette:
+    radial-gradient(circle at 70% 45%, rgba(244, 190, 92, 0.12) 0%, rgba(244, 190, 92, 0) 32%),
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 40%),
+    repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px);
+
+  --surface-0: #0a101b;
+  --surface-1: #0d1523;
+  --surface-2: rgba(8, 13, 22, 0.35);
+  --text-1: #f6f3eb;
+  --text-2: #d8d2c6;
+  --text-2-soft: rgba(216, 210, 198, 0.72);
+  --text-3: rgba(232, 226, 215, 0.74);
+
+  --gold: #f8d287;
+  --gold-strong: #e3b85e;
+  --gold-deep: #c6953d;
+  --gold-link: #f3d89c;
+  --kicker: rgba(248, 210, 135, 0.92);
+  --gold-soft-strong: rgba(248, 220, 155, 0.9);
+
+  --panel-bg: rgba(12, 19, 32, 0.66);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --shadow-1: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 10px 24px rgba(0, 0, 0, 0.28);
+
+  --faq-bg: linear-gradient(180deg, rgba(10, 16, 27, 0.96) 0%, rgba(10, 16, 27, 1) 100%);
+  --faq-border: rgba(255, 255, 255, 0.14);
+  --faq-hover: rgba(255, 255, 255, 0.02);
+  --faq-open: rgba(255, 255, 255, 0.025);
+
+  --qr-border: rgba(255, 255, 255, 0.1);
+  --qr-bg: rgba(14, 18, 26, 0.22);
+  --qr-overlay: linear-gradient(180deg, rgba(10, 14, 20, 0.18), rgba(10, 14, 20, 0.06));
+  --qr-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --toggle-bg: rgba(10, 16, 27, 0.72);
+  --toggle-border: rgba(248, 210, 135, 0.35);
+  --toggle-text: rgba(248, 236, 205, 0.88);
+  --toggle-active-bg: rgba(248, 210, 135, 0.2);
+  --toggle-active-text: #f9e4b3;
+  --toggle-focus: #ffe2a0;
+  --modal-backdrop: rgba(0, 0, 0, 0.55);
+  --poster-shadow: 0 34px 90px rgba(0, 0, 0, 0.55);
+  --btn-bg: linear-gradient(180deg, #f8d995 0%, #f1c974 100%);
+  --btn-border: rgba(255, 255, 255, 0.22);
+  --btn-ink: #231a0b;
+  --btn-shadow: 0 10px 28px rgba(230, 176, 77, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  --btn-info-bg: linear-gradient(180deg, rgba(248, 210, 135, 0.28) 0%, rgba(248, 210, 135, 0.16) 100%);
+  --btn-info-border: rgba(248, 210, 135, 0.68);
+  --btn-info-ink: #f8e2b4;
+  --btn-info-shadow: 0 10px 26px rgba(8, 12, 20, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  --btn-ghost-bg: rgba(8, 13, 22, 0.35);
+  --btn-ghost-border: rgba(248, 210, 135, 0.35);
+  --btn-ghost-ink: #f1ddab;
+}
+
+:root[data-theme="light"] {
+  --bg-filter: brightness(1.18) contrast(1.02) saturate(1.03);
+  --bg-veil:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0.58) 45%, rgba(255, 255, 255, 0.52) 100%),
+    linear-gradient(180deg, rgba(255, 245, 230, 0.1) 0%, rgba(255, 255, 255, 0.24) 100%);
+  --bg-vignette:
+    radial-gradient(circle at 70% 45%, rgba(244, 190, 92, 0.07) 0%, rgba(244, 190, 92, 0) 35%),
+    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 42%);
+
+  --surface-0: #edf2f8;
+  --surface-1: rgba(255, 255, 255, 0.68);
+  --surface-2: rgba(255, 255, 255, 0.55);
+  --text-1: #18263a;
+  --text-2: #314055;
+  --text-2-soft: rgba(49, 64, 85, 0.86);
+  --text-3: rgba(41, 54, 73, 0.78);
+
+  --gold: #c39542;
+  --gold-strong: #b5802f;
+  --gold-deep: #8f6426;
+  --gold-link: #9a6c22;
+  --kicker: rgba(143, 100, 38, 0.92);
+  --gold-soft-strong: rgba(154, 108, 34, 0.9);
+
+  --panel-bg: rgba(255, 255, 255, 0.58);
+  --panel-border: rgba(0, 0, 0, 0.08);
+  --shadow-1: 0 22px 46px rgba(20, 28, 40, 0.14);
+  --shadow-2: 0 10px 22px rgba(20, 28, 40, 0.12);
+
+  --faq-bg: linear-gradient(180deg, rgba(236, 241, 248, 0.92) 0%, rgba(231, 237, 246, 0.97) 100%);
+  --faq-border: rgba(22, 34, 52, 0.12);
+  --faq-hover: rgba(255, 255, 255, 0.46);
+  --faq-open: rgba(255, 255, 255, 0.52);
+
+  --qr-border: rgba(25, 36, 52, 0.16);
+  --qr-bg: rgba(255, 255, 255, 0.66);
+  --qr-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+  --qr-shadow: 0 8px 18px rgba(25, 36, 52, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  --toggle-bg: rgba(255, 255, 255, 0.72);
+  --toggle-border: rgba(24, 38, 58, 0.18);
+  --toggle-text: rgba(24, 38, 58, 0.78);
+  --toggle-active-bg: rgba(195, 149, 66, 0.16);
+  --toggle-active-text: #7c5620;
+  --toggle-focus: #9c7028;
+  --modal-backdrop: rgba(15, 25, 40, 0.28);
+  --poster-shadow: 0 24px 52px rgba(25, 36, 52, 0.2);
+  --btn-bg: linear-gradient(180deg, #d7b068 0%, #c39542 100%);
+  --btn-border: rgba(124, 86, 32, 0.22);
+  --btn-ink: #1d232c;
+  --btn-shadow: 0 10px 24px rgba(124, 86, 32, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --btn-info-bg: linear-gradient(180deg, rgba(195, 149, 66, 0.18) 0%, rgba(195, 149, 66, 0.12) 100%);
+  --btn-info-border: rgba(124, 86, 32, 0.34);
+  --btn-info-ink: #6f4f1f;
+  --btn-info-shadow: 0 10px 20px rgba(25, 36, 52, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.48);
+  --btn-ghost-bg: rgba(255, 255, 255, 0.46);
+  --btn-ghost-border: rgba(24, 38, 58, 0.16);
+  --btn-ghost-ink: #2f3f56;
+}
+
+html,
+body {
+  background: var(--surface-0);
+  color: var(--text-1);
+}
+
+.hero,
+.poster {
+  background-image: none !important;
+  background-color: var(--surface-0);
+}
+
+.poster {
+  box-shadow: var(--poster-shadow);
+}
+
+.hero::before,
+.hero::after,
+.poster::before,
+.poster::after {
+  content: none !important;
+}
+
+.hero > .bg,
+.poster > .bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero > .bg::before,
+.poster > .bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: 62% 46%;
+  filter: var(--bg-filter);
+}
+
+.hero > .bg::after,
+.poster > .bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-veil), var(--bg-vignette);
+}
+
+.kicker,
+.faq__label {
+  color: var(--kicker);
+}
+
+.sub,
+.supporting,
+.info-row__key,
+.info-hint,
+.faq__answer,
+.label,
+.note,
+.trust {
+  color: var(--text-2);
+}
+
+.sub span,
+.metric__label,
+.progress2__label {
+  color: var(--text-3);
+}
+
+h1,
+.headline,
+.progress2__value,
+.metric__value,
+.value,
+.site,
+.modal__title,
+.modal__panel,
+.info-row__val,
+.faq__question {
+  color: var(--text-1);
+}
+
+.btn-ghost,
+.metrics,
+.metric--target,
+.progress2__targetChip,
+.modal__panel,
+.copy-btn,
+.toast,
+.qr,
+.qr-placeholder {
+  border-color: var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-2);
+}
+
+.copy-btn,
+.faq__sources a,
+.faq__inlineTrigger,
+.katki-title,
+.info-section__title {
+  color: var(--gold-link);
+}
+
+.copy-btn:hover {
+  background: var(--panel-bg);
+}
+
+.faq {
+  background: var(--faq-bg);
+}
+
+.faq__list,
+.faq__item,
+.row:first-of-type,
+.row:last-of-type,
+.katki,
+.info-section + .info-section {
+  border-color: var(--faq-border);
+}
+
+.faq__question:hover {
+  background: var(--faq-hover);
+}
+
+.faq__item.is-open {
+  background: var(--faq-open);
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  background: var(--gold-soft-strong);
+}
+
+.modal {
+  background: var(--modal-backdrop);
+}
+
+.modal__panel,
+.metrics,
+.qr,
+.progress2__targetChip,
+.metric--target,
+.btn-info,
+.toast {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.modal__panel {
+  background: var(--surface-1);
+  border-color: var(--panel-border);
+  box-shadow: var(--shadow-1);
+}
+
+.toast {
+  color: var(--text-1);
+}
+
+.metric--target .metric__value,
+.progress2__targetChip .progress2__value,
+.progress2__targetChip .progress2__label {
+  color: var(--gold);
+}
+
+.btn {
+  border-color: var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  box-shadow: var(--btn-shadow);
+}
+
+.btn-ghost {
+  border-color: var(--btn-ghost-border);
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-ink);
+}
+
+.btn-info {
+  border-color: var(--btn-info-border);
+  background: var(--btn-info-bg);
+  color: var(--btn-info-ink);
+  box-shadow: var(--btn-info-shadow);
+}
+
+.metric--raised {
+  align-items: center;
+}
+
+.qr {
+  border: 1px solid var(--qr-border);
+  background: var(--qr-bg);
+  box-shadow: var(--qr-shadow);
+}
+
+.qr::after {
+  background: var(--qr-overlay);
+}
+
+.theme-toggle {
+  position: fixed;
+  right: clamp(0.8rem, 2vw, 1.3rem);
+  top: clamp(0.8rem, 2vw, 1.3rem);
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-toggle__btn {
+  border: 0;
+  min-height: 32px;
+  padding: 0.34rem 0.74rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--toggle-text);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle__btn.is-active {
+  background: var(--toggle-active-bg);
+  color: var(--toggle-active-text);
+}
+
+.theme-toggle__btn:focus-visible {
+  outline: 2px solid var(--toggle-focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  .theme-toggle {
+    top: 0.68rem;
+    right: 0.68rem;
+  }
+
+  .theme-toggle__btn {
+    min-height: 30px;
+    padding: 0.28rem 0.64rem;
+    font-size: 0.72rem;
+  }
+}
