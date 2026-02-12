@@ -166,6 +166,21 @@
       outline:2px solid #ffe2a0;
       outline-offset:2px;
     }
+    .btn-info{
+      margin-top:.92rem;
+      min-height:50px;
+      padding:.72rem 1.3rem;
+      border-color:rgba(248,210,135,.68);
+      background:linear-gradient(180deg, rgba(248,210,135,.28) 0%, rgba(248,210,135,.16) 100%);
+      color:#f8e2b4;
+      font-weight:700;
+      box-shadow:0 10px 26px rgba(8,12,20,.28), inset 0 1px 0 rgba(255,255,255,.14);
+    }
+    .btn-info:hover{
+      border-color:rgba(248,210,135,.84);
+      background:linear-gradient(180deg, rgba(248,210,135,.35) 0%, rgba(248,210,135,.22) 100%);
+      box-shadow:0 14px 30px rgba(8,12,20,.34), inset 0 1px 0 rgba(255,255,255,.18);
+    }
 
     .progress2{
       max-width:min(760px, 92vw);
@@ -431,6 +446,161 @@
       transform:translateX(-50%) translateY(0);
     }
 
+    .faq{
+      position:relative;
+      z-index:2;
+      padding:clamp(2.2rem, 5vw, 4rem) 0 clamp(2.8rem, 6vw, 4.8rem);
+      background:linear-gradient(180deg, rgba(10,16,27,.96) 0%, rgba(10,16,27,1) 100%);
+    }
+    .faq__container{
+      width:min(var(--container), calc(100% - 3rem));
+      margin:0 auto;
+    }
+    .faq__label{
+      margin:0 0 .9rem;
+      font-size:.74rem;
+      line-height:1;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:rgba(248,210,135,.9);
+      font-weight:600;
+    }
+    .faq__list{
+      border-top:1px solid rgba(255,255,255,.14);
+    }
+    .faq__item{
+      position:relative;
+      border-bottom:1px solid rgba(255,255,255,.14);
+    }
+    .faq__item::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:10px;
+      bottom:10px;
+      width:2px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--gold-2), var(--gold-1));
+      opacity:0;
+      transform:scaleY(.84);
+      transition:opacity .28s ease, transform .28s ease;
+    }
+    .faq__question{
+      width:100%;
+      border:0;
+      padding:1rem .15rem 1rem .85rem;
+      background:transparent;
+      color:#f1ece0;
+      text-align:left;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.8rem;
+      font-size:clamp(1rem, 2vw, 1.12rem);
+      line-height:1.35;
+      font-weight:560;
+      cursor:pointer;
+      transition:background-color .24s ease, color .24s ease;
+    }
+    .faq__question:hover{
+      background:rgba(255,255,255,.02);
+    }
+    .faq__question:focus-visible{
+      outline:2px solid #ffe2a0;
+      outline-offset:2px;
+      border-radius:8px;
+    }
+    .faq__icon{
+      width:18px;
+      height:18px;
+      flex:0 0 auto;
+      position:relative;
+      opacity:.85;
+    }
+    .faq__icon::before,
+    .faq__icon::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:12px;
+      height:1.5px;
+      border-radius:999px;
+      background:rgba(248,220,155,.9);
+      transform:translate(-50%, -50%);
+      transition:transform .22s ease, opacity .22s ease;
+    }
+    .faq__icon::after{
+      transform:translate(-50%, -50%) rotate(90deg);
+    }
+    .faq__panel{
+      display:grid;
+      grid-template-rows:0fr;
+      opacity:.02;
+      transition:grid-template-rows .3s ease, opacity .22s ease;
+    }
+    .faq__panelInner{
+      overflow:hidden;
+      padding:0 .15rem 0 .85rem;
+    }
+    .faq__answer{
+      margin:0 0 1rem;
+      font-size:.98rem;
+      line-height:1.62;
+      color:rgba(216,210,198,.9);
+    }
+    .faq__answer p{
+      margin:.2rem 0 0;
+    }
+    .faq__sources{
+      margin:.65rem 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:.34rem;
+    }
+    .faq__sources a{
+      color:#f3d89c;
+      text-decoration:none;
+      border-bottom:1px solid rgba(248,210,135,.4);
+    }
+    .faq__sources a:hover{
+      color:#fae7be;
+      border-bottom-color:rgba(248,210,135,.7);
+    }
+    .faq__inlineTrigger{
+      border:0;
+      background:none;
+      color:#f3d89c;
+      padding:0;
+      margin:0 .12rem;
+      font:inherit;
+      line-height:inherit;
+      text-decoration:underline;
+      text-underline-offset:2px;
+      cursor:pointer;
+    }
+    .faq__inlineTrigger:focus-visible{
+      outline:2px solid #ffe2a0;
+      outline-offset:2px;
+      border-radius:3px;
+    }
+    .faq__item.is-open{
+      background:rgba(255,255,255,.025);
+    }
+    .faq__item.is-open::before{
+      opacity:1;
+      transform:scaleY(1);
+    }
+    .faq__item.is-open .faq__panel{
+      grid-template-rows:1fr;
+      opacity:1;
+    }
+    .faq__item.is-open .faq__icon::after{
+      opacity:0;
+      transform:translate(-50%, -50%) rotate(90deg) scaleX(.7);
+    }
+
     @media (max-width:900px){
       .hero{background-position:67% 44%}
       .content{
@@ -452,10 +622,13 @@
       .progress2__track{height:10px}
       .info-row{flex-wrap:wrap}
       .info-row__key{min-width:64px}
+      .faq__container{width:min(var(--container), calc(100% - 2.2rem))}
+      .faq__question{padding-left:.72rem}
+      .faq__panelInner{padding-left:.72rem}
     }
 
     @media (prefers-reduced-motion:reduce){
-      .btn,.btn-ghost,.progress2__fill,.reveal,.modal,.toast{transition:none !important}
+      .btn,.btn-ghost,.progress2__fill,.reveal,.modal,.toast,.faq__item::before,.faq__question,.faq__icon::before,.faq__icon::after,.faq__panel{transition:none !important}
       .reveal{opacity:1; transform:none}
     }
   </style>
@@ -472,10 +645,6 @@
       <p class="sub reveal" style="transition-delay:.12s">
         Boston, öğrencilerin ve ilim insanlarının buluştuğu bir merkez. Kalıcı bir dershane evi, bu hizmeti burada daimî kılacak.
       </p>
-
-      <div class="cta-row reveal" style="transition-delay:.18s">
-        <button class="btn-ghost" type="button" id="openContrib" aria-haspopup="dialog" aria-controls="contribDialog">Katkı Bilgileri</button>
-      </div>
 
       <div class="progress2 reveal" style="transition-delay:.24s">
         <div class="progress2__row">
@@ -498,9 +667,126 @@
         >
           <div class="progress2__fill" id="progressFill"></div>
         </div>
+        <button class="btn-ghost btn-info" type="button" id="openContrib" aria-haspopup="dialog" aria-controls="contribDialog">Katkı Bilgileri</button>
       </div>
     </section>
   </main>
+
+  <section class="faq" aria-labelledby="sss-label">
+    <div class="faq__container">
+      <p class="faq__label" id="sss-label">SSS</p>
+      <div class="faq__list">
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+            <span>Bu proje nedir?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer"><p>Boston’da kalıcı bir dershane evi (müstakil ev) edinerek okumalar ve hizmet için istikrarlı bir mekân kurmayı hedefliyoruz.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+            <span>Neden Boston?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a2" role="region" aria-labelledby="faq-q2" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer"><p>Boston, tarih boyunca ve bugün de ülkeye birçok alanda yön veren bir merkez. Burada yetkin ve çeşitli kişilerden oluşan kuvvetli bir cemaat var; bu açıdan şanslıyız. En büyük eksiğimiz, bu potansiyeli harekete geçirecek kalıcı bir mekân—bir dershane evi.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+            <span>Hedef tutar neden $855,000?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a3" role="region" aria-labelledby="faq-q3" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer">
+                <p>Boston ve çevresinde konut fiyatları yüksek; son veriler Boston’da medyan satış fiyatının yaklaşık $825K civarında seyrettiğini gösteriyor.</p>
+                <p>Bu nedenle hedefimiz, tek bir ‘uygun ev’e kilitlenmek yerine, dershane işleyişini taşıyacak ve erişilebilir konumda bir evi gerçekçi biçimde arayabileceğimiz bir bütçe oluşturmak.</p>
+                <p>Bu bütçeyi belirlerken üç kriteri esas aldık:</p>
+                <ul>
+                  <li>Dershane işleyişi için oda ihtiyacı: Sadece ‘2 yatak odalı’ bir ev değil; birden fazla oda (okuma/sohbet alanı + misafir/kalma düzeni + temel depolama) sürdürülebilirlik için pratikte kritik.</li>
+                  <li>Erişilebilirlik: Ev, hem sürekli kalanlar hem de cemaatin düzenli gelip gidebilmesi için ulaşımı makul bir bölgede olmalı; bu da seçenekleri ve fiyat bandını etkiliyor.</li>
+                  <li>Satın alma masrafları ve ilk hazırlıklar: Hedef tutar, ev bedelinin yanında kapanış/vergiler ve zorunlu ilk hazırlık giderleri için de pay bırakacak şekilde planlandı (Massachusetts’te alıcı kapanış masrafları için sıkça %2–%5 aralığı gibi bir çerçeve veriliyor).</li>
+                </ul>
+                <ul class="faq__sources">
+                  <li>Kaynaklar: <a href="https://www.redfin.com/city/1826/MA/Boston/housing-market" target="_blank" rel="noopener noreferrer">Boston housing market (median price)</a></li>
+                  <li>Kaynaklar: <a href="https://www.houzeo.com/blog/how-much-are-closing-costs-in-massachusetts/" target="_blank" rel="noopener noreferrer">MA closing costs (typical range)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+            <span>Toplanan miktar ne sıklıkla güncelleniyor?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a4" role="region" aria-labelledby="faq-q4" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer"><p>İlerleme haftada iki kez güncellenir.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+            <span>Bağışlar kim tarafından toplanıyor?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a5" role="region" aria-labelledby="faq-q5" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer"><p>Bağışlar Lighthouse for Humanity (nonprofit) üzerinden toplanır ve proje için emanet edilir.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+            <span>Mülkiyet kimin adına olacak?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a6" role="region" aria-labelledby="faq-q6" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer"><p>Evin mülkiyeti Lighthouse for Humanity adına olacaktır.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+            <span>Zekât bu projeye verilebilir mi?</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a7" role="region" aria-labelledby="faq-q7" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer">
+                <p>Bu konuda farklı yaklaşımlar vardır; “fî sebîlillâh” kapsamında eğitim/hizmet müesseselerini değerlendiren görüşler ve “temlik” esasını vurgulayan görüşler bulunur. İlgili kaynakları bu başlık altında paylaşıyoruz.</p>
+                <ul class="faq__sources">
+                  <li>Kaynaklar: <a href="https://sorularlaislamiyet.com/zekat-verilecek-yerlerden-allah-yolunda-ifadesine-medreseler-girer-mi" target="_blank" rel="noopener noreferrer">Sorularla İslamiyet</a></li>
+                  <li>Kaynaklar: <a href="https://youtu.be/7x3CRqLlYME" target="_blank" rel="noopener noreferrer">Video</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq__item">
+          <button class="faq__question" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+            <span>Katkı yöntemleri nerede? (ABD / Türkiye)</span><span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__panel" id="faq-a8" role="region" aria-labelledby="faq-q8" aria-hidden="true">
+            <div class="faq__panelInner">
+              <div class="faq__answer">
+                <p>Tüm yöntemler <button class="faq__inlineTrigger" type="button" data-open-contrib>Katkı Bilgileri</button> bağlantısında yer alır.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <div class="modal" id="contribDialog" role="dialog" aria-modal="true" aria-labelledby="contribTitle" aria-hidden="true">
     <div class="modal__panel">
@@ -655,6 +941,27 @@
             showToast();
           }
         });
+      });
+
+      const faqButtons = Array.from(document.querySelectorAll(".faq__question"));
+      const setFaqState = (button, open) => {
+        const panel = document.getElementById(button.getAttribute("aria-controls"));
+        button.setAttribute("aria-expanded", String(open));
+        if (panel) panel.setAttribute("aria-hidden", String(!open));
+        button.closest(".faq__item")?.classList.toggle("is-open", open);
+      };
+
+      faqButtons.forEach((button) => {
+        setFaqState(button, false);
+        button.addEventListener("click", () => {
+          const shouldOpen = button.getAttribute("aria-expanded") !== "true";
+          faqButtons.forEach((other) => setFaqState(other, false));
+          if (shouldOpen) setFaqState(button, true);
+        });
+      });
+
+      document.querySelectorAll("[data-open-contrib]").forEach((trigger) => {
+        trigger.addEventListener("click", openDialog);
       });
     })();
   </script>
