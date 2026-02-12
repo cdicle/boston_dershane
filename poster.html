@@ -9,15 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #18283c;
-      --ink-soft: rgba(30, 45, 66, 0.9);
-      --ink-muted: rgba(32, 49, 73, 0.78);
-      --gold: #c29543;
-      --gold-strong: #aa772f;
-      --hairline: rgba(22, 37, 56, 0.2);
+      --ink: #14202b;
+      --ink-soft: #2e3f52;
+      --ink-muted: rgba(30, 46, 66, 0.78);
+      --gold-1: #f8d287;
+      --gold-2: #e3b85e;
+      --gold-3: #c6953d;
+      --capsule: #f7f2e8;
+      --hairline: rgba(0, 0, 0, 0.1);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       --img: url("Gemini_Generated_Image_wj4os5wj4os5wj4o.png");
-      --tile: rgba(255, 251, 243, 0.76);
-      --tile-strong: rgba(255, 251, 245, 0.88);
     }
 
     * { box-sizing: border-box; }
@@ -32,17 +33,17 @@
       width: 100%;
       height: 100%;
       margin: 0;
+      padding: 0;
       font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       color: var(--ink);
-      background: #e8edf3;
+      background: #edf2f8;
     }
 
     body {
       display: grid;
       place-items: center;
-      padding: 0;
     }
 
     .poster {
@@ -60,20 +61,13 @@
     .poster::before {
       content: "";
       position: absolute;
-      inset: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 51%;
       background:
-        linear-gradient(98deg, rgba(250, 253, 255, 0.8) 0%, rgba(250, 253, 255, 0.45) 36%, rgba(250, 253, 255, 0.14) 66%, rgba(250, 253, 255, 0) 100%),
-        radial-gradient(96% 92% at 18% 24%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 54%, rgba(255, 255, 255, 0) 90%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(0deg, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.18) 34%, rgba(255, 255, 255, 0) 74%);
+        linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.64) 42%, rgba(255, 255, 255, 0) 70%),
+        radial-gradient(95% 88% at 24% 24%, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.08) 54%, rgba(255, 255, 255, 0) 88%);
       pointer-events: none;
       z-index: 0;
     }
@@ -90,27 +84,8 @@
     }
 
     .left-col {
-      max-width: 130mm;
+      max-width: 131mm;
       position: relative;
-    }
-
-    .left-col::before {
-      content: "";
-      position: absolute;
-      left: -8mm;
-      top: -7mm;
-      width: 146mm;
-      height: 130mm;
-      background:
-        radial-gradient(94% 84% at 28% 28%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 52%, rgba(255, 255, 255, 0) 88%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0) 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .left-col > * {
-      position: relative;
-      z-index: 1;
     }
 
     .kicker {
@@ -119,7 +94,7 @@
       text-transform: uppercase;
       font-weight: 700;
       font-size: 0.72rem;
-      color: var(--gold-strong);
+      color: var(--gold-3);
     }
 
     .headline {
@@ -131,76 +106,67 @@
       width: 22ch;
       max-width: 100%;
       color: var(--ink);
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.48);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
     }
 
     .supporting {
-      margin: 0 0 4mm;
+      margin: 0 0 4.2mm;
       font-size: 0.98rem;
-      line-height: 1.57;
+      line-height: 1.56;
       color: var(--ink-soft);
       max-width: 56ch;
     }
 
-    .metrics {
+    .funding__capsule {
       display: inline-flex;
-      align-items: center;
-      gap: 2.8mm;
-      width: fit-content;
+      align-items: stretch;
       max-width: 100%;
-      padding: 2.1mm 2.4mm;
       border-radius: 999px;
-      border: 1px solid rgba(22, 37, 56, 0.16);
-      background: rgba(255, 252, 246, 0.74);
-      box-shadow: 0 4px 10px rgba(18, 30, 46, 0.08);
+      border: 1px solid var(--hairline);
+      background: var(--capsule);
+      box-shadow: var(--shadow);
+      overflow: hidden;
       font-variant-numeric: tabular-nums;
-      white-space: nowrap;
     }
 
-    .metric {
-      display: inline-flex;
+    .funding__segment {
+      display: flex;
       align-items: center;
-      gap: 2.1mm;
-      line-height: 1;
+      gap: 2.2mm;
+      padding: 2.3mm 3.2mm;
+      min-height: 13.2mm;
       white-space: nowrap;
     }
 
-    .metric__label {
-      margin: 0;
-      font-size: 0.62rem;
-      line-height: 1;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 680;
-      color: var(--ink-muted);
+    .funding__segment + .funding__segment {
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .metric__value {
+    .funding__segment--target {
+      background: linear-gradient(180deg, rgba(248, 210, 135, 0.27) 0%, rgba(248, 210, 135, 0.14) 100%);
+    }
+
+    .funding__label {
+      margin: 0;
+      font-size: 0.6rem;
+      line-height: 1;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 700;
+    }
+
+    .funding__segment--target .funding__label {
+      color: #9d6f2b;
+    }
+
+    .funding__value {
       margin: 0;
       font-size: 1.18rem;
       line-height: 1;
-      font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--ink);
-    }
-
-    .metric--target {
-      padding: 2.1mm 3.3mm;
-      border-radius: 999px;
-      border: 1px solid rgba(162, 117, 44, 0.42);
-      background: linear-gradient(180deg, rgba(194, 149, 67, 0.19) 0%, rgba(194, 149, 67, 0.12) 100%);
-    }
-
-    .metric--target .metric__label,
-    .metric--target .metric__value {
-      color: #263a53;
-    }
-
-    .metric--raised {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.9mm;
-      padding: 0.4mm 0.7mm;
+      font-weight: 730;
     }
 
     .bottom {
@@ -216,13 +182,13 @@
     .katki {
       width: 100%;
       min-width: 0;
-      padding-top: 3.1mm;
-      border-top: 1px solid rgba(22, 37, 56, 0.28);
+      padding-top: 3.2mm;
+      border-top: 1px solid rgba(22, 37, 56, 0.26);
     }
 
     .katki-title {
       margin: 0 0 3.2mm;
-      color: var(--gold-strong);
+      color: var(--gold-3);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       font-size: 0.9rem;
@@ -239,12 +205,12 @@
     }
 
     .row:first-of-type {
-      border-top: 1px solid rgba(22, 37, 56, 0.16);
+      border-top: 1px solid rgba(22, 37, 56, 0.15);
       padding-top: 1.7mm;
     }
 
     .row:last-of-type {
-      border-bottom: 1px solid rgba(22, 37, 56, 0.16);
+      border-bottom: 1px solid rgba(22, 37, 56, 0.15);
       padding-bottom: 1.7mm;
     }
 
@@ -252,7 +218,7 @@
       color: #203248;
       font-size: 0.75rem;
       line-height: 1.35;
-      font-weight: 600;
+      font-weight: 610;
     }
 
     .value {
@@ -285,10 +251,10 @@
     .qr {
       width: 52mm;
       height: 52mm;
-      padding: 1.8mm;
-      border-radius: 4.2mm;
-      border: 1px solid rgba(22, 37, 56, 0.12);
-      background: var(--tile-strong);
+      padding: 1.6mm;
+      border-radius: 3.8mm;
+      border: 1px solid rgba(22, 37, 56, 0.13);
+      background: rgba(255, 251, 243, 0.9);
       box-shadow: 0 7px 16px rgba(18, 30, 46, 0.1);
       position: relative;
       justify-self: end;
@@ -301,20 +267,21 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      border-radius: 3.1mm;
+      border-radius: 2.8mm;
       filter: saturate(0.93) brightness(0.95) contrast(0.95);
     }
 
     /* Export note:
-       Chrome -> Print -> Save as PDF
+       Chrome print dialog -> Save as PDF
        Scale: 100%
-       Headers/Footers: Off
+       Disable headers/footers
        Margins: None */
 
     @media print {
       html,
       body {
         margin: 0 !important;
+        padding: 0 !important;
         width: 210mm;
         height: 297mm;
         background: transparent;
@@ -343,14 +310,14 @@
         </h1>
         <p class="supporting">Boston, tarihi boyunca ve bugün de ülkeye birçok anlamda yön veren bir merkez. Burada güçlü bir cemaat var; fakat bu potansiyeli harekete geçirecek kalıcı bir dershane evi eksik.</p>
 
-        <div class="metrics" aria-label="Proje durumu">
-          <div class="metric metric--target">
-            <span class="metric__label">Hedef</span>
-            <span class="metric__value">$855,000</span>
+        <div class="funding__capsule" aria-label="Proje durumu">
+          <div class="funding__segment funding__segment--target">
+            <span class="funding__label">Hedef</span>
+            <span class="funding__value">$855,000</span>
           </div>
-          <div class="metric metric--raised">
-            <span class="metric__label">Toplanan</span>
-            <span class="metric__value">$214,600</span>
+          <div class="funding__segment funding__segment--raised">
+            <span class="funding__label">Toplanan</span>
+            <span class="funding__value">$214,600</span>
           </div>
         </div>
       </section>

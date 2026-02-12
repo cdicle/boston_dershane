@@ -9,21 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f2f5f9;
-      --ink: #1a2a3d;
-      --ink-soft: #2f4259;
-      --ink-muted: rgba(33, 50, 72, 0.78);
-      --gold: #c29543;
-      --gold-strong: #a8762d;
-      --glass: rgba(255, 251, 243, 0.66);
-      --glass-strong: rgba(255, 250, 242, 0.78);
-      --hairline: rgba(20, 34, 52, 0.16);
-      --shadow: 0 14px 36px rgba(20, 34, 52, 0.12);
-      --hero-scrim:
-        linear-gradient(95deg, rgba(249, 252, 255, 0.72) 0%, rgba(249, 252, 255, 0.48) 38%, rgba(249, 252, 255, 0.14) 68%, rgba(249, 252, 255, 0) 100%),
-        radial-gradient(95% 90% at 18% 28%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 52%, rgba(255, 255, 255, 0) 90%);
-      --hero-img: url("Gemini_Generated_Image_wj4os5wj4os5wj4o.png");
+      --bg: #eef3f8;
+      --ink: #14202b;
+      --ink-soft: #2d3f53;
+      --ink-muted: rgba(30, 46, 66, 0.78);
+      --gold-1: #f8d287;
+      --gold-2: #e3b85e;
+      --gold-3: #c6953d;
+      --hairline: rgba(0, 0, 0, 0.1);
+      --capsule: #f7f2e8;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       --container: 760px;
+      --hero-image: url("Gemini_Generated_Image_wj4os5wj4os5wj4o.png");
     }
 
     * { box-sizing: border-box; }
@@ -43,30 +40,35 @@
     .hero {
       min-height: 100svh;
       position: relative;
-      overflow: hidden;
       isolation: isolate;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      background-image: var(--hero-img);
+      background-image: var(--hero-image);
       background-size: cover;
-      background-position: 64% 50%;
+      background-position: 67% 48%;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: var(--hero-scrim);
-      z-index: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: min(52%, 860px);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.62) 42%, rgba(255, 255, 255, 0) 68%),
+        radial-gradient(92% 86% at 22% 26%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 54%, rgba(255, 255, 255, 0) 86%);
       pointer-events: none;
+      z-index: 0;
     }
 
     .content {
       position: relative;
       z-index: 1;
       width: min(var(--container), calc(100% - 3rem));
-      margin-left: clamp(1rem, 6vw, 5rem);
-      transform: translateY(-3svh);
+      margin-left: clamp(1rem, 5.5vw, 5rem);
+      transform: translateY(-2.2svh);
     }
 
     .kicker {
@@ -75,12 +77,12 @@
       text-transform: uppercase;
       font-weight: 650;
       font-size: 0.78rem;
-      color: var(--gold-strong);
+      color: var(--gold-3);
     }
 
     h1 {
-      margin: 0.15rem 0 1.15rem;
-      font-size: clamp(2rem, 6.1vw, 4.35rem);
+      margin: 0.15rem 0 1.1rem;
+      font-size: clamp(2rem, 6vw, 4.25rem);
       line-height: 1.03;
       letter-spacing: -0.02em;
       font-weight: 700;
@@ -91,134 +93,122 @@
     }
 
     .sub {
-      margin: 0 0 1.35rem;
+      margin: 0 0 1.2rem;
       font-size: clamp(1rem, 1.9vw, 1.24rem);
       line-height: 1.56;
       color: var(--ink-soft);
       max-width: 62ch;
     }
 
-    .progress2 {
+    .funding {
       max-width: min(760px, 92vw);
-      margin-top: 0.3rem;
-      padding: 0.74rem 0.82rem 0.82rem;
-      border-radius: 18px;
-      border: 1px solid var(--hairline);
-      background: var(--glass);
-      box-shadow: var(--shadow);
+      margin-top: 0.25rem;
       font-variant-numeric: tabular-nums;
     }
 
-    .progress2__row {
+    .funding__capsule {
+      display: flex;
+      align-items: stretch;
+      width: fit-content;
+      max-width: 100%;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      background: var(--capsule);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .funding__segment {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 0.95rem;
-      margin-bottom: 0.62rem;
-    }
-
-    .progress2__metric {
-      display: inline-flex;
-      align-items: center;
       gap: 0.5rem;
-      min-width: 0;
+      padding: 0.66rem 0.9rem;
+      min-height: 52px;
+      white-space: nowrap;
     }
 
-    .progress2__label {
+    .funding__segment + .funding__segment {
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .funding__segment--target {
+      background: linear-gradient(180deg, rgba(248, 210, 135, 0.26) 0%, rgba(248, 210, 135, 0.14) 100%);
+    }
+
+    .funding__label {
       margin: 0;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       line-height: 1;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--ink-muted);
-      font-weight: 650;
+      font-weight: 680;
     }
 
-    .progress2__value {
+    .funding__segment--target .funding__label {
+      color: #9d6f2b;
+    }
+
+    .funding__value {
       margin: 0;
-      font-size: clamp(1.35rem, 2.7vw, 1.75rem);
+      font-size: clamp(1.25rem, 2.6vw, 1.62rem);
       line-height: 1;
-      color: var(--ink);
-      font-weight: 700;
       letter-spacing: -0.01em;
+      color: var(--ink);
+      font-weight: 720;
     }
 
-    .progress2__targetChip {
-      padding: 0.48rem 0.74rem;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(194, 149, 67, 0.2) 0%, rgba(194, 149, 67, 0.12) 100%);
-      border: 1px solid rgba(157, 113, 43, 0.42);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64);
+    .funding__meta {
+      margin-top: 0.62rem;
+      display: flex;
+      align-items: center;
+      gap: 0.72rem;
+      width: min(690px, 100%);
     }
 
-    .progress2__targetChip .progress2__label,
-    .progress2__targetChip .progress2__value {
-      color: #273a53;
-    }
-
-    .progress2__track {
+    .funding__track {
+      flex: 1;
       position: relative;
-      width: 100%;
-      height: 11px;
+      height: 4px;
       border-radius: 999px;
-      overflow: visible;
-      background: rgba(32, 49, 69, 0.16);
-      border: 1px solid rgba(32, 49, 69, 0.22);
+      background: rgba(20, 32, 43, 0.18);
+      overflow: hidden;
     }
 
-    .progress2__fill {
-      position: relative;
-      width: 0%;
+    .funding__fill {
       height: 100%;
+      width: 0%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #b98636 0%, #cea154 100%);
-      border: 1px solid rgba(152, 109, 42, 0.45);
-      transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .progress2__fill::after {
-      content: "";
-      position: absolute;
-      right: -4px;
-      top: 50%;
-      width: 8px;
-      height: 8px;
-      transform: translateY(-50%);
-      border-radius: 50%;
-      background: #b98636;
-      box-shadow: 0 0 0 1px rgba(24, 38, 57, 0.26);
-      opacity: 0.9;
-    }
-
-    .progress2__fill[style*="width: 0"]::after {
-      opacity: 0;
+      background: linear-gradient(90deg, #c18f3b 0%, #dbb96b 100%);
+      transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .btn-info {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 0.88rem;
-      min-height: 48px;
-      padding: 0.72rem 1.26rem;
+      min-height: 38px;
+      padding: 0.42rem 0.88rem;
       border-radius: 999px;
-      border: 1px solid rgba(33, 51, 73, 0.2);
-      background: var(--glass-strong);
+      border: 1px solid rgba(20, 32, 43, 0.2);
+      background: rgba(255, 252, 246, 0.86);
       color: var(--ink);
       text-decoration: none;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: 650;
       letter-spacing: 0.01em;
-      box-shadow: 0 10px 22px rgba(20, 34, 52, 0.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
     }
 
     .btn-info:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(20, 34, 52, 0.14);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     .btn-info:focus-visible {
-      outline: 2px solid rgba(168, 118, 45, 0.62);
+      outline: 2px solid rgba(198, 149, 61, 0.65);
       outline-offset: 2px;
     }
 
@@ -240,7 +230,7 @@
       line-height: 1;
       letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: var(--gold-strong);
+      color: var(--gold-3);
       font-weight: 650;
     }
 
@@ -261,7 +251,7 @@
       bottom: 10px;
       width: 2px;
       border-radius: 999px;
-      background: linear-gradient(180deg, #b37f31, #d0a85d);
+      background: linear-gradient(180deg, var(--gold-3), var(--gold-1));
       opacity: 0;
       transform: scaleY(0.84);
       transition: opacity 0.28s ease, transform 0.28s ease;
@@ -290,7 +280,7 @@
     }
 
     .faq__question:focus-visible {
-      outline: 2px solid rgba(168, 118, 45, 0.62);
+      outline: 2px solid rgba(198, 149, 61, 0.65);
       outline-offset: 2px;
       border-radius: 8px;
     }
@@ -354,7 +344,7 @@
     .faq__inlineTrigger {
       color: #8a5f20;
       text-decoration: none;
-      border-bottom: 1px solid rgba(168, 118, 45, 0.42);
+      border-bottom: 1px solid rgba(198, 149, 61, 0.45);
       background: none;
       border-top: 0;
       border-left: 0;
@@ -363,18 +353,17 @@
       font: inherit;
       line-height: inherit;
       cursor: pointer;
+      margin: 0 0.12rem;
     }
 
     .faq__sources a:hover,
     .faq__inlineTrigger:hover {
       color: #70480f;
-      border-bottom-color: rgba(168, 118, 45, 0.65);
+      border-bottom-color: rgba(198, 149, 61, 0.66);
     }
 
-    .faq__inlineTrigger { margin: 0 0.12rem; }
-
     .faq__inlineTrigger:focus-visible {
-      outline: 2px solid rgba(168, 118, 45, 0.62);
+      outline: 2px solid rgba(198, 149, 61, 0.65);
       outline-offset: 2px;
       border-radius: 3px;
     }
@@ -410,30 +399,53 @@
     }
 
     @media (max-width: 900px) {
-      .hero { background-position: 70% 48%; }
+      .hero {
+        background-position: 73% 47%;
+      }
+
+      .hero::before {
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.56) 42%, rgba(255, 255, 255, 0.08) 78%, rgba(255, 255, 255, 0) 100%);
+      }
+
       .content {
         width: min(var(--container), calc(100% - 2.2rem));
         margin-left: 1.1rem;
-        transform: translateY(-1.5svh);
+        transform: translateY(-1.2svh);
       }
-      h1 { font-size: clamp(1.85rem, 8.3vw, 3.2rem); }
+
+      h1 {
+        font-size: clamp(1.85rem, 8.3vw, 3.2rem);
+      }
     }
 
     @media (max-width: 520px) {
-      .hero { background-position: 74% 48%; }
+      .hero { background-position: 77% 47%; }
       .content { transform: translateY(-0.6svh); }
       .kicker { font-size: 0.72rem; }
       .sub { font-size: 0.98rem; }
-      .progress2 { padding: 0.66rem 0.66rem 0.74rem; }
-      .progress2__row { align-items: flex-start; gap: 0.7rem; }
-      .progress2__value { font-size: 1.28rem; }
+      .funding__capsule {
+        width: 100%;
+        border-radius: 16px;
+      }
+      .funding__segment {
+        flex: 1 1 0;
+        justify-content: center;
+        padding: 0.6rem 0.62rem;
+      }
+      .funding__value { font-size: 1.18rem; }
+      .funding__meta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-info { width: fit-content; }
       .faq__container { width: min(var(--container), calc(100% - 2.2rem)); }
       .faq__question { padding-left: 0.72rem; }
       .faq__panelInner { padding-left: 0.72rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .progress2__fill,
+      .funding__fill,
       .reveal,
       .faq__item::before,
       .faq__question,
@@ -460,28 +472,32 @@
         Boston, öğrencilerin ve ilim insanlarının buluştuğu bir merkez. Kalıcı bir dershane evi, bu hizmeti burada daimî kılacak.
       </p>
 
-      <div class="progress2 reveal" style="transition-delay:.24s">
-        <div class="progress2__row">
-          <div class="progress2__metric">
-            <p class="progress2__label">Toplanan</p>
-            <p class="progress2__value" id="currentValue">$214,600</p>
+      <div class="funding reveal" style="transition-delay:.24s">
+        <div class="funding__capsule" aria-label="Proje durumu">
+          <div class="funding__segment funding__segment--target">
+            <p class="funding__label">Hedef</p>
+            <p class="funding__value" id="targetValue">$855,000</p>
           </div>
-          <div class="progress2__metric progress2__targetChip">
-            <p class="progress2__label">Hedef</p>
-            <p class="progress2__value" id="targetValue">$855,000</p>
+          <div class="funding__segment funding__segment--raised">
+            <p class="funding__label">Toplanan</p>
+            <p class="funding__value" id="currentValue">$214,600</p>
           </div>
         </div>
-        <div
-          class="progress2__track"
-          role="progressbar"
-          aria-label="Bağış ilerleme durumu"
-          aria-valuemin="0"
-          aria-valuemax="855000"
-          aria-valuenow="214600"
-        >
-          <div class="progress2__fill" id="progressFill"></div>
+
+        <div class="funding__meta">
+          <div
+            class="funding__track"
+            role="progressbar"
+            aria-label="Bağış ilerleme durumu"
+            aria-valuemin="0"
+            aria-valuemax="855000"
+            aria-valuenow="214600"
+            id="progressTrack"
+          >
+            <div class="funding__fill" id="progressFill"></div>
+          </div>
+          <a class="btn-info" href="#faq">Katkı Bilgileri</a>
         </div>
-        <a class="btn-info" href="#faq">Katkı Bilgileri</a>
       </div>
     </section>
   </main>
@@ -612,7 +628,7 @@
       const currentValue = document.getElementById("currentValue");
       const targetValue = document.getElementById("targetValue");
       const progressFill = document.getElementById("progressFill");
-      const bar = document.querySelector(".progress2__track");
+      const bar = document.getElementById("progressTrack");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       currentValue.textContent = `$${fmt.format(current)}`;
