@@ -28,7 +28,7 @@
 	      --panel-radius: 5.2mm;
 	      --panel-shadow: 0 16px 40px rgba(18, 30, 46, 0.18);
 	      --panel-pad: 7.8mm;
-		      --panel-blur: 6px;
+		      --panel-blur: 12px;
 
 		      --pill-bg: rgba(255, 252, 246, 0.97);
 		      --pill-border: rgba(18, 30, 46, 0.26);
@@ -126,13 +126,24 @@
 		      -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.01);
 		    }
 
-	    .poster__panel {
-	      position: absolute;
-	      z-index: 1;
-	      left: 16mm;
-	      top: 18mm;
-	      width: 128mm;
-	    }
+		    .poster__panel {
+		      position: absolute;
+		      z-index: 1;
+		      left: 16mm;
+		      top: 18mm;
+		      width: 128mm;
+		    }
+
+		    /* Give the headline a clearer "stage" without changing the overall system. */
+		    .poster__panel.glass-panel {
+		      background: linear-gradient(
+		        180deg,
+		        rgba(255, 255, 255, 0.92) 0%,
+		        rgba(255, 255, 255, 0.86) 38%,
+		        rgba(255, 255, 255, 0.78) 100%
+		      );
+		      padding-top: calc(var(--panel-pad) + 2.2mm);
+		    }
 
 	    .kicker {
 	      margin: 0 0 4mm;
@@ -143,25 +154,29 @@
 	      color: var(--c-gold-3);
 	    }
 
-	    .headline {
-	      margin: 0 0 5mm;
-	      font-size: var(--fs-h1);
-	      line-height: 1.03;
-	      letter-spacing: -0.02em;
-	      font-weight: 700;
-	      width: 22ch;
-	      max-width: 100%;
-	      color: var(--c-ink);
-	      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
-	    }
+		    .headline {
+		      margin: 0 0 7mm;
+		      font-size: calc(var(--fs-h1) * 1.18);
+		      line-height: 0.95;
+		      letter-spacing: -0.035em;
+		      font-weight: 800;
+		      width: 21ch;
+		      max-width: 100%;
+		      color: #0a0f1a;
+		      text-shadow:
+		        0 1px 0 rgba(255, 255, 255, 0.35),
+		        0 10px 30px rgba(0, 0, 0, 0.1);
+		      -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.12);
+		    }
 
-	    .supporting {
-	      margin: 0 0 4.2mm;
-	      font-size: var(--fs-sub);
-	      line-height: 1.56;
-	      color: var(--c-ink-soft);
-	      max-width: 56ch;
-	    }
+		    .supporting {
+		      margin: 0 0 5.2mm;
+		      font-size: var(--fs-sub);
+		      line-height: 1.56;
+		      color: rgba(11, 18, 32, 0.74);
+		      font-weight: 500;
+		      max-width: 56ch;
+		    }
 
 		    .funding__capsule {
 	      display: inline-flex;
@@ -363,12 +378,13 @@
 		  <article class="poster" role="img" aria-label="Boston Dershane Evi premium posteri">
 		      <section class="poster__panel glass-panel" aria-label="Proje özeti paneli">
 		        <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
-	        <h1 class="headline">
-	          Boston’da cemaat<br>
-	          var; kalıcı dershane<br>
-	          evi yok.<br>
-	          Bunu birlikte değiştirelim.
-	        </h1>
+		        <h1 class="headline">
+		          Boston’da cemaat var;<br>
+		          kalıcı dershane<br>
+		          evi yok.<br>
+		          Bunu birlikte<br>
+		          değiştirelim.
+		        </h1>
 	        <p class="supporting">Boston, tarihi boyunca ve bugün de ülkeye birçok anlamda yön veren bir merkez. Burada güçlü bir cemaat var; fakat bu potansiyeli harekete geçirecek kalıcı bir dershane evi eksik.</p>
 
 	        <div class="funding__capsule" aria-label="Proje durumu">
