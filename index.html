@@ -260,6 +260,55 @@
 	      background: var(--c-surface);
 	    }
 
+	    #katki {
+	      scroll-margin-top: 24px;
+	    }
+
+	    .katki-rows {
+	      margin: 0.85rem 0 0;
+	      padding: 0.85rem 0;
+	      display: grid;
+	      gap: 0.6rem;
+	      border-top: 1px solid rgba(24, 40, 61, 0.14);
+	      border-bottom: 1px solid rgba(24, 40, 61, 0.14);
+	    }
+
+	    .katki-row {
+	      display: flex;
+	      align-items: baseline;
+	      justify-content: space-between;
+	      gap: 1rem;
+	    }
+
+	    .katki-label {
+	      color: var(--c-ink);
+	      font-weight: 650;
+	      font-size: 0.92rem;
+	    }
+
+	    .katki-value {
+	      color: #0e1720;
+	      font-weight: 700;
+	      font-size: 0.92rem;
+	      font-variant-numeric: tabular-nums;
+	      white-space: nowrap;
+	    }
+
+	    .katki-note {
+	      margin: 0.7rem 0 0;
+	      color: var(--c-ink-soft);
+	      font-weight: 600;
+	    }
+
+	    @media (max-width: 520px) {
+	      .katki-row {
+	        flex-direction: column;
+	        align-items: flex-start;
+	        gap: 0.25rem;
+	      }
+	      .katki-value { white-space: normal; }
+	    }
+
     .faq__container {
       width: min(var(--container), calc(100% - 3rem));
       margin: 0 auto;
@@ -549,11 +598,11 @@
           >
             <div class="funding__fill" id="progressFill"></div>
           </div>
-          <a class="btn-info" href="#faq">Katkı Bilgileri</a>
-        </div>
-      </div>
-    </section>
-  </main>
+	          <a class="btn-info" href="#katki">Katkı Bilgileri</a>
+	        </div>
+	      </div>
+	    </section>
+	  </main>
 
   <section class="faq" id="faq" aria-labelledby="sss-label">
     <div class="faq__container">
@@ -655,18 +704,33 @@
           </div>
         </article>
 
-        <article class="faq__item">
-          <button class="faq__question" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
-            <span>Katkı yöntemleri nerede? (ABD / Türkiye)</span><span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__panel" id="faq-a8" role="region" aria-labelledby="faq-q8" aria-hidden="true">
-            <div class="faq__panelInner">
-              <div class="faq__answer">
-                <p>Katkı bilgileri bu sayfadaki iletişim kanalları üzerinden paylaşılmaktadır.</p>
-              </div>
-            </div>
-          </div>
-        </article>
+	        <article class="faq__item" id="katki">
+	          <button class="faq__question" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+	            <span>Katkı yöntemleri nerede? (ABD / Türkiye)</span><span class="faq__icon" aria-hidden="true"></span>
+	          </button>
+	          <div class="faq__panel" id="faq-a8" role="region" aria-labelledby="faq-q8" aria-hidden="true">
+	            <div class="faq__panelInner">
+	              <div class="faq__answer">
+	                <p>ABD ve Türkiye için katkı bilgileri:</p>
+	                <div class="katki-rows" aria-label="Katkı detayları">
+	                  <div class="katki-row">
+	                    <span class="katki-label">ABD (Zelle)</span>
+	                    <span class="katki-value">boston@lh4h.org</span>
+	                  </div>
+	                  <div class="katki-row">
+	                    <span class="katki-label">Türkiye TL IBAN</span>
+	                    <span class="katki-value">TRXX XXXX XXXX XXXX XXXX XXXX XX</span>
+	                  </div>
+	                  <div class="katki-row">
+	                    <span class="katki-label">Türkiye USD IBAN</span>
+	                    <span class="katki-value">TRXX XXXX XXXX XXXX XXXX XXXX XX</span>
+	                  </div>
+	                </div>
+	                <p class="katki-note">Açıklama: Boston Dershane Evi</p>
+	              </div>
+	            </div>
+	          </div>
+	        </article>
       </div>
     </div>
   </section>
@@ -730,6 +794,29 @@
           if (shouldOpen) setFaqState(button, true);
         });
       });
+
+      const openKatki = () => {
+        const katkiButton = document.getElementById("faq-q8");
+        const katkiTarget = document.getElementById("katki");
+        if (!katkiButton) return;
+        faqButtons.forEach((other) => setFaqState(other, false));
+        setFaqState(katkiButton, true);
+        katkiTarget?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      document.querySelector(".btn-info[href=\"#katki\"]")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (history.replaceState) history.replaceState(null, "", "#katki");
+        openKatki();
+      });
+
+      window.addEventListener("hashchange", () => {
+        if (window.location.hash === "#katki") openKatki();
+      });
+
+      if (window.location.hash === "#katki") {
+        requestAnimationFrame(() => openKatki());
+      }
     })();
   </script>
 </body>
