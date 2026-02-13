@@ -83,6 +83,17 @@
 	      print-color-adjust: exact;
 	    }
 
+	    body.render-mode {
+	      display: block;
+	      background: transparent;
+	    }
+
+	    body.render-mode .poster {
+	      box-shadow: none;
+	      -webkit-print-color-adjust: exact;
+	      print-color-adjust: exact;
+	    }
+
 	    .poster {
       position: relative;
       width: 210mm;
@@ -334,9 +345,15 @@
 	  </style>
 </head>
 <body>
-	  <article class="poster" role="img" aria-label="Boston Dershane Evi premium posteri">
-	      <section class="poster__panel glass-panel" aria-label="Proje özeti paneli">
-	        <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("render")) document.body.classList.add("render-mode");
+    })();
+  </script>
+		  <article class="poster" role="img" aria-label="Boston Dershane Evi premium posteri">
+		      <section class="poster__panel glass-panel" aria-label="Proje özeti paneli">
+		        <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
 	        <h1 class="headline">
 	          Boston’da cemaat<br>
 	          var; kalıcı dershane<br>

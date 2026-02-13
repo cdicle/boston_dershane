@@ -490,9 +490,24 @@
       }
       .reveal { opacity: 1; transform: none; }
     }
+
+    html.render-mode,
+    html.render-mode body {
+      overflow: hidden;
+    }
+
+    html.render-mode .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    html.render-mode .funding__fill {
+      transition: none !important;
+    }
   </style>
 </head>
-	<body>
+		<body>
 	  <main class="hero" aria-label="Boston Dershane Evi Projesi kahraman alanı">
 	    <section class="content glass-panel">
 	      <p class="kicker reveal">BOSTON DERSHANE EVİ PROJESİ</p>
@@ -653,6 +668,9 @@
 
   <script>
     (() => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("render")) document.documentElement.classList.add("render-mode");
+
       const target = 855000;
       const current = 214600;
       const percent = Math.min((current / target) * 100, 100);
@@ -662,7 +680,9 @@
       const targetValue = document.getElementById("targetValue");
       const progressFill = document.getElementById("progressFill");
       const bar = document.getElementById("progressTrack");
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reducedMotion =
+        document.documentElement.classList.contains("render-mode") ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       currentValue.textContent = `$${fmt.format(current)}`;
       targetValue.textContent = `$${fmt.format(target)}`;
