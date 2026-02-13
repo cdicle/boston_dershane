@@ -26,13 +26,13 @@
 		      --panel-bg-strong: rgba(255, 255, 255, 0.86);
 		      --panel-border: rgba(18, 30, 46, 0.22);
 	      --panel-radius: 5.2mm;
-	      --panel-shadow: 0 20px 46px rgba(18, 30, 46, 0.2);
+	      --panel-shadow: 0 16px 40px rgba(18, 30, 46, 0.18);
 	      --panel-pad: 7.8mm;
 		      --panel-blur: 6px;
 
 		      --pill-bg: rgba(255, 252, 246, 0.97);
 		      --pill-border: rgba(18, 30, 46, 0.26);
-		      --pill-shadow: 0 3.2mm 8.6mm rgba(18, 30, 46, 0.18);
+		      --pill-shadow: 0 3.2mm 8.2mm rgba(18, 30, 46, 0.18);
 	      --pill-h: 13.2mm;
 		      --pill-sep: rgba(18, 30, 46, 0.12);
 
@@ -163,19 +163,21 @@
 	      max-width: 56ch;
 	    }
 
-	    .funding__capsule {
+		    .funding__capsule {
 	      display: inline-flex;
 	      align-items: stretch;
 	      max-width: 100%;
 	      border-radius: 999px;
 	      border: 1px solid var(--pill-border);
-	      background: var(--pill-bg);
-	      box-shadow: var(--pill-shadow);
+	      background: linear-gradient(180deg, rgba(255, 252, 246, 0.99) 0%, rgba(255, 252, 246, 0.965) 100%);
+	      box-shadow:
+	        var(--pill-shadow),
+	        inset 0 0.3mm 0 rgba(255, 255, 255, 0.7);
 	      overflow: hidden;
 	      font-variant-numeric: tabular-nums;
 	    }
 
-	    .funding__segment {
+		    .funding__segment {
 	      display: flex;
 	      align-items: center;
 	      gap: 2.2mm;
@@ -183,6 +185,13 @@
 	      height: var(--pill-h);
 	      white-space: nowrap;
 	    }
+
+		    .funding__label,
+		    .funding__value {
+		      display: inline-flex;
+		      align-items: center;
+		      height: 100%;
+		    }
 
 	    .funding__segment + .funding__segment {
 	      border-left: 1px solid var(--pill-sep);
@@ -196,11 +205,11 @@
 	      margin: 0;
 	      font-size: var(--fs-pill-label);
 	      line-height: 1;
-	      letter-spacing: 0.13em;
+	      letter-spacing: 0.14em;
 	      text-transform: uppercase;
 		      color: #1b2c41;
-		      font-weight: 720;
-		    }
+	      font-weight: 740;
+	    }
 
 		    .funding__segment--target .funding__label {
 		      color: #6b4410;
