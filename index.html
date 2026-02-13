@@ -261,7 +261,7 @@
 	    }
 
 	    #katki {
-	      scroll-margin-top: 24px;
+	      scroll-margin-top: clamp(24px, 7svh, 56px);
 	    }
 
 	    .katki-rows {
@@ -798,10 +798,41 @@
       const openKatki = () => {
         const katkiButton = document.getElementById("faq-q8");
         const katkiTarget = document.getElementById("katki");
+        const katkiPanel = document.getElementById("faq-a8");
+        const behavior = reducedMotion ? "auto" : "smooth";
+        const padding = 22;
+
+        const ensureInView = (el) => {
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          const topLimit = padding;
+          // Keep a little extra breathing room so the last line doesn't kiss the viewport edge.
+          const bottomLimit = window.innerHeight - padding - 24;
+          let delta = 0;
+          if (rect.top < topLimit) delta = Math.floor(rect.top - topLimit) - 2;
+          if (rect.bottom > bottomLimit) delta = Math.ceil(rect.bottom - bottomLimit) + 2;
+          if (delta) window.scrollBy({ top: delta, behavior });
+        };
+
+        const scrollToKatki = () => {
+          // Prefer scrolling to the actual details so the IBANs are in view.
+          const rows = katkiTarget?.querySelector(".katki-rows");
+          const note = katkiTarget?.querySelector(".katki-note");
+          (rows || katkiPanel || katkiTarget)?.scrollIntoView({ behavior, block: "start" });
+          // After scrolling, nudge to ensure the full block is visible.
+          requestAnimationFrame(() => {
+            // Prefer ensuring the last line is visible so the whole block is readable.
+            ensureInView(note || rows || katkiPanel || katkiTarget);
+          });
+        };
+
         if (!katkiButton) return;
         faqButtons.forEach((other) => setFaqState(other, false));
         setFaqState(katkiButton, true);
-        katkiTarget?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // The accordion animates open; scroll after layout settles.
+        scrollToKatki();
+        setTimeout(scrollToKatki, reducedMotion ? 0 : 360);
       };
 
       document.querySelector(".btn-info[href=\"#katki\"]")?.addEventListener("click", (e) => {
