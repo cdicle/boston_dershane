@@ -21,19 +21,20 @@
 	      --c-gold-2: #e3b85e;
 	      --c-gold-3: #c6953d;
 
-	      --panel-bg: rgba(255, 255, 255, 0.58);
-	      --panel-bg-strong: rgba(255, 255, 255, 0.66);
-	      --panel-border: rgba(18, 30, 46, 0.16);
+		      /* Poster glass is less transparent for distance readability */
+		      --panel-bg: rgba(255, 255, 255, 0.78);
+		      --panel-bg-strong: rgba(255, 255, 255, 0.86);
+		      --panel-border: rgba(18, 30, 46, 0.22);
 	      --panel-radius: 5.2mm;
 	      --panel-shadow: 0 20px 46px rgba(18, 30, 46, 0.2);
 	      --panel-pad: 7.8mm;
-	      --panel-blur: 14px;
+		      --panel-blur: 6px;
 
-	      --pill-bg: rgba(255, 252, 246, 0.9);
-	      --pill-border: rgba(18, 30, 46, 0.18);
-	      --pill-shadow: 0 10px 24px rgba(18, 30, 46, 0.14);
+		      --pill-bg: rgba(255, 252, 246, 0.97);
+		      --pill-border: rgba(18, 30, 46, 0.26);
+		      --pill-shadow: 0 3.2mm 8.6mm rgba(18, 30, 46, 0.18);
 	      --pill-h: 13.2mm;
-	      --pill-sep: rgba(18, 30, 46, 0.1);
+		      --pill-sep: rgba(18, 30, 46, 0.12);
 
 	      --space-1: 2.2mm;
 	      --space-2: 3.2mm;
@@ -106,26 +107,24 @@
 	      box-shadow: var(--panel-shadow);
 	    }
 
-	    .poster::before {
-      content: "";
-      position: absolute;
-	      inset: 0;
-	      background:
-	        linear-gradient(90deg, rgba(251, 248, 243, 0.28) 0%, rgba(251, 248, 243, 0.14) 28%, rgba(251, 248, 243, 0) 55%),
-	        radial-gradient(68% 92% at 18% 30%, rgba(251, 248, 243, 0.12) 0%, rgba(251, 248, 243, 0) 72%);
-	      pointer-events: none;
-	      z-index: 0;
-	    }
+		    .poster::before {
+	      content: "";
+	      position: absolute;
+		      inset: 0;
+		      background: linear-gradient(90deg, rgba(251, 248, 243, 0.06) 0%, rgba(251, 248, 243, 0.03) 28%, rgba(251, 248, 243, 0) 55%);
+		      pointer-events: none;
+		      z-index: 0;
+		    }
 
-	    .glass-panel {
+		    .glass-panel {
 	      border-radius: var(--panel-radius);
 	      border: 1px solid var(--panel-border);
 	      background: linear-gradient(180deg, var(--panel-bg-strong) 0%, var(--panel-bg) 100%);
 	      box-shadow: 0 14px 34px rgba(18, 30, 46, 0.16);
 	      padding: var(--panel-pad);
-	      backdrop-filter: blur(var(--panel-blur)) saturate(1.05);
-	      -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.05);
-	    }
+		      backdrop-filter: blur(var(--panel-blur)) saturate(1.01);
+		      -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.01);
+		    }
 
 	    .poster__panel {
 	      position: absolute;
@@ -193,28 +192,28 @@
 	      background: linear-gradient(180deg, rgba(248, 210, 135, 0.34) 0%, rgba(248, 210, 135, 0.16) 100%);
 	    }
 
-	    .funding__label {
+		    .funding__label {
 	      margin: 0;
 	      font-size: var(--fs-pill-label);
 	      line-height: 1;
 	      letter-spacing: 0.13em;
 	      text-transform: uppercase;
-	      color: rgba(18, 30, 46, 0.84);
-	      font-weight: 720;
-	    }
+		      color: #1b2c41;
+		      font-weight: 720;
+		    }
 
-	    .funding__segment--target .funding__label {
-	      color: #7f571a;
-	    }
+		    .funding__segment--target .funding__label {
+		      color: #6b4410;
+		    }
 
-	    .funding__value {
+		    .funding__value {
 	      margin: 0;
 	      font-size: var(--fs-pill-value);
 	      line-height: 1;
 	      letter-spacing: -0.01em;
-	      color: var(--c-ink);
-	      font-weight: 740;
-	    }
+		      color: #0e1720;
+		      font-weight: 740;
+		    }
 
 	    .poster__katki {
 	      position: absolute;
@@ -286,7 +285,7 @@
       font-weight: 650;
     }
 
-	    .qr {
+		    .qr {
 	      position: absolute;
 	      z-index: 1;
 	      right: 16mm;
@@ -295,10 +294,10 @@
 	      height: 52mm;
 	      padding: 1.8mm;
 	      border-radius: 4mm;
-	      border: 1px solid rgba(22, 37, 56, 0.14);
-	      background: rgba(255, 251, 243, 0.92);
-	      box-shadow: 0 10px 22px rgba(18, 30, 46, 0.12);
-	    }
+		      border: 1px solid var(--pill-border);
+		      background: rgba(255, 252, 246, 0.97);
+		      box-shadow: 0 3.2mm 8.6mm rgba(18, 30, 46, 0.18);
+		    }
 
     .qr__img {
       width: 100%;
@@ -309,11 +308,12 @@
       filter: saturate(0.93) brightness(0.95) contrast(0.95);
     }
 
-    /* Export note:
-       Chrome print dialog -> Save as PDF
-       Scale: 100%
-       Disable headers/footers
-       Margins: None */
+	    /* Export note:
+	       Chrome print dialog -> Save as PDF
+	       Scale: 100%
+	       Disable headers/footers
+	       Margins: None
+	       Enable: Background graphics */
 
 	    @media print {
 	      html,
