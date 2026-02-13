@@ -6,20 +6,46 @@
   <title>Boston Dershane Evi Poster</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --ink: #14202b;
-      --ink-soft: #2e3f52;
-      --ink-muted: rgba(30, 46, 66, 0.78);
-      --gold-1: #f8d287;
-      --gold-2: #e3b85e;
-      --gold-3: #c6953d;
-      --capsule: #f7f2e8;
-      --hairline: rgba(0, 0, 0, 0.1);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      --img: url("Gemini_Generated_Image_wj4os5wj4os5wj4o.png");
-    }
+	  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	  <style>
+	    :root {
+	      /* Shared design system (keep variable names in index.html too) */
+	      --bg-image: url("Gemini_Generated_Image_wj4os5wj4os5wj4o.jpeg");
+
+	      --c-bg: #eef3f8;
+	      --c-surface: #f6f3ed;
+	      --c-ink: #14202b;
+	      --c-ink-soft: #2d3f53;
+	      --c-ink-muted: rgba(20, 32, 43, 0.72);
+	      --c-gold-1: #f8d287;
+	      --c-gold-2: #e3b85e;
+	      --c-gold-3: #c6953d;
+
+	      --panel-bg: rgba(255, 255, 255, 0.58);
+	      --panel-bg-strong: rgba(255, 255, 255, 0.66);
+	      --panel-border: rgba(18, 30, 46, 0.16);
+	      --panel-radius: 5.2mm;
+	      --panel-shadow: 0 20px 46px rgba(18, 30, 46, 0.2);
+	      --panel-pad: 7.8mm;
+	      --panel-blur: 14px;
+
+	      --pill-bg: rgba(255, 252, 246, 0.9);
+	      --pill-border: rgba(18, 30, 46, 0.18);
+	      --pill-shadow: 0 10px 24px rgba(18, 30, 46, 0.14);
+	      --pill-h: 13.2mm;
+	      --pill-sep: rgba(18, 30, 46, 0.1);
+
+	      --space-1: 2.2mm;
+	      --space-2: 3.2mm;
+	      --space-3: 4.2mm;
+	      --space-4: 6mm;
+
+	      --fs-kicker: 0.72rem;
+	      --fs-h1: 1.74rem;
+	      --fs-sub: 0.98rem;
+	      --fs-pill-label: 0.6rem;
+	      --fs-pill-value: 1.18rem;
+	    }
 
     * { box-sizing: border-box; }
 
@@ -28,8 +54,8 @@
       margin: 0;
     }
 
-    html,
-    body {
+	    html,
+	    body {
       width: 100%;
       height: 100%;
       margin: 0;
@@ -37,163 +63,164 @@
       font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      color: var(--ink);
-      background: #edf2f8;
-    }
+	      color: var(--c-ink);
+	      background: var(--c-bg);
+	    }
 
-    body {
-      display: grid;
-      place-items: center;
-    }
+	    body {
+	      display: grid;
+	      place-items: center;
+	    }
 
-    .poster {
+	    body.print-mode {
+	      display: block;
+	      background: transparent;
+	    }
+
+	    body.print-mode .poster {
+	      box-shadow: none;
+	      -webkit-print-color-adjust: exact;
+	      print-color-adjust: exact;
+	    }
+
+	    .poster {
       position: relative;
       width: 210mm;
       height: 297mm;
       overflow: hidden;
       isolation: isolate;
-      background-image: var(--img);
-      background-size: cover;
-      background-position: center right;
-      box-shadow: 0 20px 46px rgba(18, 30, 46, 0.2);
-    }
+	      background-image: var(--bg-image);
+	      background-size: cover;
+	      background-position: center right;
+	      box-shadow: var(--panel-shadow);
+	    }
 
-    .poster::before {
+	    .poster::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 51%;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.64) 42%, rgba(255, 255, 255, 0) 70%),
-        radial-gradient(95% 88% at 24% 24%, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.08) 54%, rgba(255, 255, 255, 0) 88%);
-      pointer-events: none;
-      z-index: 0;
-    }
+	      inset: 0;
+	      background:
+	        linear-gradient(90deg, rgba(251, 248, 243, 0.28) 0%, rgba(251, 248, 243, 0.14) 28%, rgba(251, 248, 243, 0) 55%),
+	        radial-gradient(68% 92% at 18% 30%, rgba(251, 248, 243, 0.12) 0%, rgba(251, 248, 243, 0) 72%);
+	      pointer-events: none;
+	      z-index: 0;
+	    }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      height: 100%;
-      padding: 18mm 16mm 14mm;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14mm;
-    }
+	    .glass-panel {
+	      border-radius: var(--panel-radius);
+	      border: 1px solid var(--panel-border);
+	      background: linear-gradient(180deg, var(--panel-bg-strong) 0%, var(--panel-bg) 100%);
+	      box-shadow: 0 14px 34px rgba(18, 30, 46, 0.16);
+	      padding: var(--panel-pad);
+	      backdrop-filter: blur(var(--panel-blur)) saturate(1.05);
+	      -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.05);
+	    }
 
-    .left-col {
-      max-width: 131mm;
-      position: relative;
-    }
+	    .poster__panel {
+	      position: absolute;
+	      z-index: 1;
+	      left: 16mm;
+	      top: 18mm;
+	      width: 128mm;
+	    }
 
-    .kicker {
-      margin: 0 0 4mm;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.72rem;
-      color: var(--gold-3);
-    }
+	    .kicker {
+	      margin: 0 0 4mm;
+	      letter-spacing: 0.13em;
+	      text-transform: uppercase;
+	      font-weight: 700;
+	      font-size: var(--fs-kicker);
+	      color: var(--c-gold-3);
+	    }
 
-    .headline {
-      margin: 0 0 5mm;
-      font-size: 1.66rem;
-      line-height: 1.03;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      width: 22ch;
-      max-width: 100%;
-      color: var(--ink);
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
-    }
+	    .headline {
+	      margin: 0 0 5mm;
+	      font-size: var(--fs-h1);
+	      line-height: 1.03;
+	      letter-spacing: -0.02em;
+	      font-weight: 700;
+	      width: 22ch;
+	      max-width: 100%;
+	      color: var(--c-ink);
+	      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+	    }
 
-    .supporting {
-      margin: 0 0 4.2mm;
-      font-size: 0.98rem;
-      line-height: 1.56;
-      color: var(--ink-soft);
-      max-width: 56ch;
-    }
+	    .supporting {
+	      margin: 0 0 4.2mm;
+	      font-size: var(--fs-sub);
+	      line-height: 1.56;
+	      color: var(--c-ink-soft);
+	      max-width: 56ch;
+	    }
 
-    .funding__capsule {
-      display: inline-flex;
-      align-items: stretch;
-      max-width: 100%;
-      border-radius: 999px;
-      border: 1px solid var(--hairline);
-      background: var(--capsule);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      font-variant-numeric: tabular-nums;
-    }
+	    .funding__capsule {
+	      display: inline-flex;
+	      align-items: stretch;
+	      max-width: 100%;
+	      border-radius: 999px;
+	      border: 1px solid var(--pill-border);
+	      background: var(--pill-bg);
+	      box-shadow: var(--pill-shadow);
+	      overflow: hidden;
+	      font-variant-numeric: tabular-nums;
+	    }
 
-    .funding__segment {
-      display: flex;
-      align-items: center;
-      gap: 2.2mm;
-      padding: 2.3mm 3.2mm;
-      min-height: 13.2mm;
-      white-space: nowrap;
-    }
+	    .funding__segment {
+	      display: flex;
+	      align-items: center;
+	      gap: 2.2mm;
+	      padding: 0 3.2mm;
+	      height: var(--pill-h);
+	      white-space: nowrap;
+	    }
 
-    .funding__segment + .funding__segment {
-      border-left: 1px solid rgba(0, 0, 0, 0.08);
-    }
+	    .funding__segment + .funding__segment {
+	      border-left: 1px solid var(--pill-sep);
+	    }
 
-    .funding__segment--target {
-      background: linear-gradient(180deg, rgba(248, 210, 135, 0.27) 0%, rgba(248, 210, 135, 0.14) 100%);
-    }
+	    .funding__segment--target {
+	      background: linear-gradient(180deg, rgba(248, 210, 135, 0.34) 0%, rgba(248, 210, 135, 0.16) 100%);
+	    }
 
-    .funding__label {
-      margin: 0;
-      font-size: 0.6rem;
-      line-height: 1;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      font-weight: 700;
-    }
+	    .funding__label {
+	      margin: 0;
+	      font-size: var(--fs-pill-label);
+	      line-height: 1;
+	      letter-spacing: 0.13em;
+	      text-transform: uppercase;
+	      color: rgba(18, 30, 46, 0.84);
+	      font-weight: 720;
+	    }
 
-    .funding__segment--target .funding__label {
-      color: #9d6f2b;
-    }
+	    .funding__segment--target .funding__label {
+	      color: #7f571a;
+	    }
 
-    .funding__value {
-      margin: 0;
-      font-size: 1.18rem;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      font-weight: 730;
-    }
+	    .funding__value {
+	      margin: 0;
+	      font-size: var(--fs-pill-value);
+	      line-height: 1;
+	      letter-spacing: -0.01em;
+	      color: var(--c-ink);
+	      font-weight: 740;
+	    }
 
-    .bottom {
-      display: grid;
-      grid-template-columns: 1fr 52mm;
-      gap: 9mm;
-      align-items: end;
-      min-height: 0;
-      position: relative;
-      z-index: 1;
-    }
+	    .poster__katki {
+	      position: absolute;
+	      z-index: 1;
+	      left: 16mm;
+	      bottom: 14mm;
+	      width: 128mm;
+	    }
 
-    .katki {
-      width: 100%;
-      min-width: 0;
-      padding-top: 3.2mm;
-      border-top: 1px solid rgba(22, 37, 56, 0.26);
-    }
-
-    .katki-title {
-      margin: 0 0 3.2mm;
-      color: var(--gold-3);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
+	    .katki-title {
+	      margin: 0 0 3.2mm;
+	      color: var(--c-gold-3);
+	      letter-spacing: 0.1em;
+	      text-transform: uppercase;
+	      font-size: 0.9rem;
+	      font-weight: 700;
+	    }
 
     .row {
       display: grid;
@@ -248,19 +275,19 @@
       font-weight: 650;
     }
 
-    .qr {
-      width: 52mm;
-      height: 52mm;
-      padding: 1.6mm;
-      border-radius: 3.8mm;
-      border: 1px solid rgba(22, 37, 56, 0.13);
-      background: rgba(255, 251, 243, 0.9);
-      box-shadow: 0 7px 16px rgba(18, 30, 46, 0.1);
-      position: relative;
-      justify-self: end;
-      align-self: end;
-      flex: 0 0 auto;
-    }
+	    .qr {
+	      position: absolute;
+	      z-index: 1;
+	      right: 16mm;
+	      bottom: 14mm;
+	      width: 52mm;
+	      height: 52mm;
+	      padding: 1.8mm;
+	      border-radius: 4mm;
+	      border: 1px solid rgba(22, 37, 56, 0.14);
+	      background: rgba(255, 251, 243, 0.92);
+	      box-shadow: 0 10px 22px rgba(18, 30, 46, 0.12);
+	    }
 
     .qr__img {
       width: 100%;
@@ -277,59 +304,66 @@
        Disable headers/footers
        Margins: None */
 
-    @media print {
-      html,
-      body {
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 210mm;
-        height: 297mm;
-        background: transparent;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+	    @media print {
+	      html,
+	      body {
+	        margin: 0 !important;
+	        padding: 0 !important;
+	        width: 210mm;
+	        height: 297mm;
+	        background: transparent;
+	        -webkit-print-color-adjust: exact;
+	        print-color-adjust: exact;
+	      }
 
-      .poster {
-        width: 210mm;
-        height: 297mm;
-        box-shadow: none;
-      }
-    }
-  </style>
+	      body {
+	        display: block !important;
+	      }
+
+	      .poster {
+	        position: fixed;
+	        left: 0;
+	        top: 0;
+	        width: 210mm;
+	        height: 297mm;
+	        box-shadow: none;
+	        -webkit-print-color-adjust: exact;
+	        print-color-adjust: exact;
+	      }
+	    }
+	  </style>
 </head>
 <body>
-  <article class="poster" role="img" aria-label="Boston Dershane Evi premium posteri">
-    <div class="content">
-      <section class="left-col">
-        <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
-        <h1 class="headline">
-          Boston’da cemaat<br>
-          var; kalıcı dershane<br>
-          evi yok.<br>
-          Bunu birlikte değiştirelim.
-        </h1>
-        <p class="supporting">Boston, tarihi boyunca ve bugün de ülkeye birçok anlamda yön veren bir merkez. Burada güçlü bir cemaat var; fakat bu potansiyeli harekete geçirecek kalıcı bir dershane evi eksik.</p>
+	  <article class="poster" role="img" aria-label="Boston Dershane Evi premium posteri">
+	      <section class="poster__panel glass-panel" aria-label="Proje özeti paneli">
+	        <p class="kicker">BOSTON DERSHANE EVİ PROJESİ</p>
+	        <h1 class="headline">
+	          Boston’da cemaat<br>
+	          var; kalıcı dershane<br>
+	          evi yok.<br>
+	          Bunu birlikte değiştirelim.
+	        </h1>
+	        <p class="supporting">Boston, tarihi boyunca ve bugün de ülkeye birçok anlamda yön veren bir merkez. Burada güçlü bir cemaat var; fakat bu potansiyeli harekete geçirecek kalıcı bir dershane evi eksik.</p>
 
-        <div class="funding__capsule" aria-label="Proje durumu">
-          <div class="funding__segment funding__segment--target">
-            <span class="funding__label">Hedef</span>
-            <span class="funding__value">$855,000</span>
-          </div>
-          <div class="funding__segment funding__segment--raised">
-            <span class="funding__label">Toplanan</span>
-            <span class="funding__value">$214,600</span>
-          </div>
-        </div>
-      </section>
+	        <div class="funding__capsule" aria-label="Proje durumu">
+	          <div class="funding__segment funding__segment--target">
+	            <span class="funding__label">Hedef</span>
+	            <span class="funding__value">$855,000</span>
+	          </div>
+	          <div class="funding__segment funding__segment--raised">
+	            <span class="funding__label">Toplanan</span>
+	            <span class="funding__value">$214,600</span>
+	          </div>
+	        </div>
+	      </section>
 
-      <section class="bottom">
-        <div class="katki">
-          <p class="katki-title">KATKI</p>
+	        <section class="poster__katki glass-panel" aria-label="Katkı bilgileri paneli">
+	          <p class="katki-title">KATKI</p>
 
-          <div class="row">
-            <div class="label">ABD (Zelle)</div>
-            <div class="value">boston@lh4h.org</div>
-          </div>
+	          <div class="row">
+	            <div class="label">ABD (Zelle)</div>
+	            <div class="value">boston@lh4h.org</div>
+	          </div>
 
           <div class="row">
             <div class="label">Türkiye TL IBAN</div>
@@ -341,16 +375,14 @@
             <div class="value">TRXX XXXX XXXX XXXX XXXX XXXX XX</div>
           </div>
 
-          <p class="note">Açıklama: Boston Dershane Evi</p>
-          <p class="trust">Bağışlar: Lighthouse for Humanity (nonprofit)</p>
-          <p class="site">dershane.bostonlh4h.org</p>
-        </div>
+	          <p class="note">Açıklama: Boston Dershane Evi</p>
+	          <p class="trust">Bağışlar: Lighthouse for Humanity (nonprofit)</p>
+	          <p class="site">dershane.bostonlh4h.org</p>
+	        </section>
 
-        <div class="qr" aria-hidden="true">
-          <img class="qr__img" src="./zelle_qr_gold_transparent_2048.png" alt="QR code" />
-        </div>
-      </section>
-    </div>
-  </article>
+	        <div class="qr" aria-hidden="true">
+	          <img class="qr__img" src="./zelle_qr_gold_transparent_2048.png" alt="QR code" />
+	        </div>
+	  </article>
 </body>
 </html>
