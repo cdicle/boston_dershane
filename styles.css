@@ -1,0 +1,190 @@
+/* Design spec: light cream bg, black sans-serif, clear hierarchy */
+
+:root {
+  --bg: #faf9f6;
+  --text: #000;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* ----- Phase 1: Header (lockup with precise alignment) ----- */
+.hero {
+  margin-bottom: 3rem;
+  padding-left: 1rem;
+}
+
+/* Show all hero boxes */
+/* .hero-lockup{
+  outline: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.hero-aciyoruz,
+.hero-dershane,
+.hero-boston{
+  outline: 1px solid rgba(0, 255, 0, 0.6);
+  margin: 0;
+  padding: 0;
+} */
+
+
+/* Lockup: sizes to dershane (only in-flow child) */
+.hero-lockup {
+  display: grid;
+  grid-template-columns: 1fr;           /* one column, width = content */
+  grid-template-rows: auto auto auto;   /* three rows: Boston'a, dershane, açıyoruz */
+  width: max-content;                   /* container width = widest row (dershane) */
+  position: relative;
+  /* no padding — box is exactly the three items */
+}
+
+.hero-boston {
+  grid-row: 1;
+  justify-self: start;   
+  align-self: start;
+  font-size: 4.5rem;
+  line-height: 0.85;
+}
+
+.hero-dershane {
+  grid-row: 2;
+  font-size: 12rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  /* transform: scaleY(2); */
+}
+
+.hero-aciyoruz {
+  grid-row: 3;
+  justify-self: end;    
+  align-self: end;    
+  font-size: 6rem;
+  line-height: 0.60;
+  font-weight: 900;
+}
+
+
+
+/* ----- Phase 2: Manifesto (below lockup, normal flow) ----- */
+.manifesto {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.manifesto p {
+  margin: 0 0 0.35em;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.manifesto p:last-child {
+  margin-bottom: 0;
+}
+
+/* ----- Phase 3 & 4: Bottom row ----- */
+.bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.raised-amount {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.raised-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.raised-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.raised-value {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.cta-text {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cta-qr {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cta-url {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.cta-url:hover {
+  text-decoration: underline;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 600px) {
+  .bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .raised-amount {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cta-qr {
+    width: 80px;
+    height: 80px;
+  }
+}
