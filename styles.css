@@ -29,57 +29,49 @@ body {
 /* ----- Phase 1: Header (lockup with precise alignment) ----- */
 .hero {
   margin-bottom: 0;
-  padding-left: 1rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+  padding-left: 0;
 }
 
-/* Show all hero boxes */
-/* .hero-lockup{
-  outline: 1px solid rgba(255, 0, 0, 0.6);
-}
-
-.hero-aciyoruz,
-.hero-dershane,
-.hero-boston{
-  outline: 1px solid rgba(0, 255, 0, 0.6);
-  margin: 0;
-  padding: 0;
-} */
-
-
-/* Lockup: sizes to dershane (only in-flow child) */
 .hero-lockup {
   display: grid;
-  grid-template-columns: 1fr;           /* one column, width = content */
-  grid-template-rows: auto auto auto;   /* three rows: Boston'a, dershane, açıyoruz */
-  width: max-content;                   /* container width = widest row (dershane) */
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  width: max-content;
   position: relative;
-  /* no padding — box is exactly the three items */
+  row-gap: 0px;
 }
 
 .hero-boston {
   grid-row: 1;
-  justify-self: start;   
+  justify-self: start;
   align-self: start;
-  font-size: 4.5rem;
-  line-height: 0.85;
+  margin: 0;
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 0.70;
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .hero-dershane {
   grid-row: 2;
+  margin: 0;
   font-size: 12rem;
-  line-height: 1;
+  line-height: 0.70;
   font-weight: 900;
   letter-spacing: -0.04em;
-  /* transform: scaleY(2); */
 }
 
 .hero-aciyoruz {
   grid-row: 3;
-  justify-self: end;    
-  align-self: end;    
+  justify-self: end;
+  align-self: end;
+  margin: 0;
   font-size: 6rem;
-  line-height: 0.60;
+  line-height: 0.70;
   font-weight: 900;
+  /* transform: translateY(-6px); */
 }
 
 
