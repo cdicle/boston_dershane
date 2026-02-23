@@ -42,6 +42,8 @@ body {
 
 /* ----- Hero ----- */
 .hero {
+  display: flex;
+  justify-content: center;
   margin-bottom: 0;
   padding-top: var(--space-4);
   padding-bottom: var(--space-2);
@@ -53,18 +55,16 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
-  width: min(100%, max-content);
+  width: max-content;
   max-width: 100%;
   position: relative;
-  row-gap: 0;
-  margin-left: auto;
-  margin-right: auto;
+  row-gap: 10px;
 }
 
 .hero-boston {
   grid-row: 1;
-  justify-self: start;
-  align-self: start;
+  width: 100%;
+  text-align: left;
   margin: 0;
   font-size: clamp(1.8rem, 5.5vw, 3.25rem);
   font-weight: 600;
@@ -84,17 +84,19 @@ body {
 
 .hero-aciyoruz {
   grid-row: 3;
-  justify-self: end;
-  align-self: end;
+  width: 100%;
+  text-align: right;
   margin: 0;
   font-size: clamp(2.2rem, 8.5vw, 6rem);
   line-height: 0.9;
   font-weight: 900;
   position: relative;
+  transform: translateY(-6px);
 }
 
 .hero-aciyoruz .swap-to {
   position: relative;
+  animation: swap-in 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .hero-aciyoruz .swap-from {
@@ -102,10 +104,6 @@ body {
   inset: 0;
   text-align: right;
   animation: swap-out 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.hero-aciyoruz .swap-to {
-  animation: swap-in 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes swap-out {
@@ -172,7 +170,7 @@ body {
 /* ----- Manifesto ----- */
 .manifesto {
   margin-top: var(--space-3);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
   text-align: center;
   max-width: none;
   white-space: nowrap;
@@ -199,7 +197,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .raised-amount {
@@ -305,7 +303,7 @@ body {
 
 /* ----- FAQ (Sıkça Sorulan Sorular) ----- */
 .faq {
-  margin-top: var(--space-5);
+  margin-top: 4.5rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 68ch;
