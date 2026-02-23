@@ -203,3 +203,51 @@ body {
     height: 80px;
   }
 }
+
+/* ----- FAQ (Sıkça Sorulan Sorular) ----- */
+.faq {
+  margin-top: 3.5rem;
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.faq-list {
+  margin-top: 1rem;
+}
+
+.faq-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+}
+
+.faq-answer p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.faq-answer p + p {
+  margin-top: 0.75rem;
+}
