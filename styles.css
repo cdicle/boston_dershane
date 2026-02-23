@@ -28,7 +28,7 @@ body {
 
 /* ----- Phase 1: Header (lockup with precise alignment) ----- */
 .hero {
-  margin-bottom: 3rem;
+  margin-bottom: 0;
   padding-left: 1rem;
 }
 
@@ -84,21 +84,23 @@ body {
 
 
 
-/* ----- Phase 2: Manifesto (below lockup, normal flow) ----- */
+/* ----- Manifesto (left-rail subtitle after hero) ----- */
 .manifesto {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
+  max-width: 32ch;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 .manifesto p {
-  margin: 0 0 0.35em;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin: 0;
+  font-size: 0.95em;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.82);
 }
 
-.manifesto p:last-child {
-  margin-bottom: 0;
+.manifesto p + p {
+  margin-top: 0.4em;
 }
 
 /* ----- Bottom stack: stats → quote → CTA ----- */
