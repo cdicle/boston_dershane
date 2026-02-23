@@ -4,6 +4,20 @@
   --bg: #faf9f6;
   --text: #000;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --page-max: 1000px;
+  --gutter: 1.5rem;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 2.5rem;
+  --space-5: 3.5rem;
+  --space-6: 4rem;
+  --ink-muted: rgba(0, 0, 0, 0.55);
+  --ink-2: rgba(0, 0, 0, 0.78);
+  --ink-3: rgba(0, 0, 0, 0.82);
+  --ink-4: rgba(0, 0, 0, 0.85);
+  --ink-soft: rgba(0, 0, 0, 0.65);
+  --ink-border: rgba(0, 0, 0, 0.1);
 }
 
 *,
@@ -21,26 +35,28 @@ body {
 }
 
 .page {
-  max-width: 1000px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 2rem 1.5rem 3rem;
+  padding: var(--space-3) var(--gutter) var(--space-6);
 }
 
-/* ----- Phase 1: Header (lockup with precise alignment) ----- */
+/* ----- Hero ----- */
 .hero {
   margin-bottom: 0;
-  padding-top: 2.5rem;
-  padding-bottom: 1rem;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-2);
   padding-left: 0;
+  overflow-x: hidden;
 }
 
 .hero-lockup {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
-  width: max-content;
+  width: min(100%, max-content);
+  max-width: 100%;
   position: relative;
-  row-gap: 0px;
+  row-gap: 0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -50,19 +66,20 @@ body {
   justify-self: start;
   align-self: start;
   margin: 0;
-  font-size: 3.25rem;
+  font-size: clamp(1.8rem, 5.5vw, 3.25rem);
   font-weight: 600;
-  line-height: 0.90;
-  color: rgba(0, 0, 0, 0.65);
+  line-height: 0.9;
+  color: var(--ink-soft);
 }
 
 .hero-dershane {
   grid-row: 2;
   margin: 0;
-  font-size: 12rem;
-  line-height: 0.70;
+  font-size: clamp(3.8rem, 14vw, 12rem);
+  line-height: 0.7;
   font-weight: 900;
   letter-spacing: -0.04em;
+  justify-self: center;
 }
 
 .hero-aciyoruz {
@@ -70,16 +87,10 @@ body {
   justify-self: end;
   align-self: end;
   margin: 0;
-  font-size: 6rem;
-  line-height: 0.90;
+  font-size: clamp(2.2rem, 8.5vw, 6rem);
+  line-height: 0.9;
   font-weight: 900;
   position: relative;
-}
-
-.hero-aciyoruz .swap {
-  position: absolute;
-  left: 0;
-  top: 0;
 }
 
 .hero-aciyoruz .swap-to {
@@ -87,8 +98,8 @@ body {
 }
 
 .hero-aciyoruz .swap-from {
-  right: 0;
-  width: 100%;
+  position: absolute;
+  inset: 0;
   text-align: right;
   animation: swap-out 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -126,12 +137,42 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .hero {
+    padding-top: var(--space-3);
+  }
+  .hero-boston { line-height: 0.95; }
+  .hero-dershane { line-height: 0.85; }
+  .hero-aciyoruz { line-height: 0.95; }
+}
 
+/* ----- Typography utilities ----- */
+.kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
 
-/* ----- Manifesto (left-rail subtitle after hero) ----- */
+.body {
+  font-size: 0.95em;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.title-sm {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ----- Manifesto ----- */
 .manifesto {
-  margin-top: 2rem;
-  margin-bottom: 3.5rem;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-5);
   text-align: center;
   max-width: none;
   white-space: nowrap;
@@ -142,7 +183,7 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.82);
+  color: var(--ink-3);
   white-space: nowrap;
 }
 
@@ -153,12 +194,12 @@ body {
   }
 }
 
-/* ----- Bottom stack: stats → quote → CTA ----- */
-.bottom-stack {
+/* ----- Bottom: stats → quote → CTA ----- */
+.bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: var(--space-3);
 }
 
 .raised-amount {
@@ -178,7 +219,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--ink-4);
 }
 
 .raised-value {
@@ -188,12 +229,13 @@ body {
 
 .quote {
   max-width: 62ch;
+  margin: 0;
 }
 
 .quote p {
   font-size: 0.95em;
   line-height: 1.7;
-  color: rgba(0, 0, 0, 0.78);
+  color: var(--ink-2);
   margin: 0;
 }
 
@@ -202,9 +244,9 @@ body {
 }
 
 .quote-source {
-  margin-top: 1rem;
+  margin-top: var(--space-2);
   font-size: 0.9em;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--ink-muted);
   letter-spacing: 0;
 }
 
@@ -252,7 +294,7 @@ body {
 @media (max-width: 600px) {
   .raised-amount {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-2);
   }
 
   .cta-qr {
@@ -263,11 +305,11 @@ body {
 
 /* ----- FAQ (Sıkça Sorulan Sorular) ----- */
 .faq {
-  margin-top: 3.5rem;
+  margin-top: var(--space-5);
   margin-left: auto;
   margin-right: auto;
   max-width: 68ch;
-  padding-bottom: 4rem;
+  padding-bottom: var(--space-6);
 }
 
 .faq h2 {
@@ -278,16 +320,16 @@ body {
 }
 
 .faq-list {
-  margin-top: 1rem;
+  margin-top: var(--space-2);
 }
 
 .faq-item {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
+  border-top: 1px solid var(--ink-border);
+  padding: var(--space-2) 0;
 }
 
 .faq-item:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--ink-border);
 }
 
 .faq-item summary {
@@ -306,7 +348,7 @@ body {
 .faq-item summary::before {
   content: "+";
   font-size: 0.95em;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--ink-muted);
 }
 
 .faq-item[open] summary::before {
@@ -314,14 +356,14 @@ body {
 }
 
 .faq-answer {
-  margin-top: 0.5rem;
+  margin-top: var(--space-1);
 }
 
 .faq-answer p {
   margin: 0;
   font-size: 0.95em;
   line-height: 1.65;
-  color: rgba(0, 0, 0, 0.78);
+  color: var(--ink-2);
 }
 
 .faq-answer p + p {
