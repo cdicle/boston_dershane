@@ -1,25 +1,24 @@
-/* Design spec: light cream bg, black sans-serif, clear hierarchy */
+/* Boston Dershane — minimal styles */
 
 :root {
   --bg: #faf9f6;
-  --text: #000;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ink: #000;
+  --muted: rgba(0, 0, 0, 0.55);
+  --border: rgba(0, 0, 0, 0.1);
+  --soft: rgba(0, 0, 0, 0.7);
   --page-max: 1000px;
   --gutter: 1.5rem;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 2rem;
-  --space-4: 2.5rem;
-  --space-5: 3.5rem;
-  --space-6: 4rem;
-  --ink-muted: rgba(0, 0, 0, 0.55);
-  --ink-2: rgba(0, 0, 0, 0.78);
-  --ink-3: rgba(0, 0, 0, 0.82);
-  --ink-4: rgba(0, 0, 0, 0.85);
-  --ink-soft: rgba(0, 0, 0, 0.65);
-  --ink-border: rgba(0, 0, 0, 0.1);
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 2rem;
+  --s4: 2.5rem;
+  --s5: 3.5rem;
+  --s6: 4rem;
+  --donation-max: clamp(720px, 80vw, 860px);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* base reset + .page */
 *,
 *::before,
 *::after {
@@ -29,7 +28,7 @@
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   font-family: var(--font);
   min-height: 100vh;
 }
@@ -37,20 +36,20 @@ body {
 .page {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: var(--space-3) var(--gutter) var(--space-6);
+  padding: var(--s3) var(--gutter) var(--s6);
 }
 
-/* ----- Hero ----- */
+/* hero */
 .hero {
   display: block;
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-2);
+  padding-top: var(--s4);
+  padding-bottom: var(--s2);
 }
 
 .hero-lockup {
   width: fit-content;
-  max-width: 100%;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .hero-boston {
@@ -81,7 +80,14 @@ body {
   margin: -0.15em 0 0 0;
 }
 
-/* Overlay both words in the same box so right edge is identical */
+/* Reserve height so layout doesn't shift */
+.hero-aciyoruz::before {
+  content: "açıyoruz";
+  visibility: hidden;
+  display: block;
+}
+
+/* Overlay both swap words, right-aligned inside lockup */
 .hero-aciyoruz .swap-word {
   position: absolute;
   right: 0;
@@ -90,36 +96,22 @@ body {
   animation: swapFade 6s ease-in-out infinite;
 }
 
-/* The visible baseline word still defines height */
-.hero-aciyoruz::before {
-  content: "açıyoruz";
-  visibility: hidden;
-  display: block;
-}
-
 .hero-aciyoruz .swap-from {
   animation-delay: 3s;
   opacity: 0;
 }
 
 @keyframes swapFade {
-  0%, 40%   { opacity: 1; }
-  50%, 90%  { opacity: 0; }
-  100%      { opacity: 1; }
+  0%, 40%  { opacity: 1; }
+  50%, 90% { opacity: 0; }
+  100%     { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-aciyoruz .swap-word { animation: none; }
-  .hero-aciyoruz .swap-from { display: none; opacity: 0; }
-  .hero-aciyoruz .swap-to   { opacity: 1; }
-}
-
-/* ----- Manifesto ----- */
+/* main / manifesto + bottom blocks */
 .manifesto {
-  margin-top: var(--space-3);
-  margin-bottom: var(--space-6);
+  margin-top: var(--s3);
+  margin-bottom: var(--s6);
   text-align: center;
-  max-width: none;
   white-space: nowrap;
 }
 
@@ -128,36 +120,15 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.6;
-  color: var(--ink-3);
+  color: var(--soft);
   white-space: nowrap;
 }
 
-@media (max-width: 520px) {
-  .page {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-  .manifesto,
-  .manifesto p {
-    white-space: normal;
-  }
-  .hero-dershane {
-    font-size: max(5.5rem, 18vw);
-  }
-  .hero-aciyoruz {
-    font-size: max(3.2rem, 12vw);
-  }
-  .hero-boston {
-    font-size: max(1.6rem, 7vw);
-  }
-}
-
-/* ----- Bottom: stats → quote → CTA ----- */
 .bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--s4);
 }
 
 .raised-amount {
@@ -177,7 +148,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-4);
+  color: var(--soft);
 }
 
 .raised-value {
@@ -193,7 +164,7 @@ body {
 .quote p {
   font-size: 0.95em;
   line-height: 1.7;
-  color: var(--ink-2);
+  color: var(--soft);
   margin: 0;
 }
 
@@ -202,19 +173,18 @@ body {
 }
 
 .quote-source {
-  margin-top: var(--space-2);
+  margin-top: var(--s2);
   font-size: 0.9em;
-  color: var(--ink-muted);
-  letter-spacing: 0;
+  color: var(--muted);
 }
 
-/* ----- Donation: Turkey (IBAN) + US (Zelle) ----- */
+/* donation */
 .donation {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--s2);
   width: 100%;
-  max-width: clamp(720px, 80vw, 860px);
+  max-width: var(--donation-max);
   margin-left: auto;
   margin-right: auto;
 }
@@ -230,17 +200,17 @@ body {
 .donation-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--ink-border);
+  border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.5);
 }
 
 .donation-col {
-  padding: var(--space-3);
+  padding: var(--s3);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--s2);
 }
 
 .donation-col-header {
@@ -249,14 +219,14 @@ body {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-4);
+  color: var(--soft);
 }
 
 .donation-org {
   margin: 0;
   font-size: 0.9em;
   font-weight: 600;
-  color: var(--ink-3);
+  color: var(--soft);
 }
 
 .donation-row {
@@ -267,7 +237,7 @@ body {
 
 .donation-label {
   font-size: 0.8em;
-  color: var(--ink-2);
+  color: var(--soft);
 }
 
 .donation-iban {
@@ -282,19 +252,19 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   font-variant-numeric: tabular-nums;
-  color: var(--text);
+  color: var(--ink);
 }
 
 .donation-helper,
 .donation-note {
   margin: 0;
   font-size: 0.8em;
-  color: var(--ink-muted);
+  color: var(--muted);
 }
 
 .donation-row-qr {
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--s2);
 }
 
 .donation-qr {
@@ -307,7 +277,7 @@ body {
 .donation-url {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 700;
-  color: var(--text);
+  color: var(--ink);
   text-decoration: none;
 }
 
@@ -315,59 +285,17 @@ body {
   text-decoration: underline;
 }
 
-/* Vertical divider between columns */
 .donation-col-turkey {
-  border-right: 1px solid var(--ink-border);
+  border-right: 1px solid var(--border);
 }
 
-/* Mobile: stack, US first then Turkey */
-@media (max-width: 768px) {
-  .donation {
-    max-width: 100%;
-  }
-
-  .donation-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .donation-col-turkey {
-    order: 2;
-    border-right: none;
-    border-top: 1px solid var(--ink-border);
-  }
-
-  .donation-col-us {
-    order: 1;
-  }
-
-  .donation-iban {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-  }
-}
-
-/* ----- Responsive ----- */
-@media (max-width: 600px) {
-  .raised-amount {
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .donation-qr {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-/* ----- FAQ (Sıkça Sorulan Sorular) ----- */
+/* faq */
 .faq {
   margin-top: 4.5rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 68ch;
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--s6);
 }
 
 .faq h2 {
@@ -378,16 +306,16 @@ body {
 }
 
 .faq-list {
-  margin-top: var(--space-2);
+  margin-top: var(--s2);
 }
 
 .faq-item {
-  border-top: 1px solid var(--ink-border);
-  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
+  padding: var(--s2) 0;
 }
 
 .faq-item:last-child {
-  border-bottom: 1px solid var(--ink-border);
+  border-bottom: 1px solid var(--border);
 }
 
 .faq-item summary {
@@ -406,7 +334,7 @@ body {
 .faq-item summary::before {
   content: "+";
   font-size: 0.95em;
-  color: var(--ink-muted);
+  color: var(--muted);
 }
 
 .faq-item[open] summary::before {
@@ -414,16 +342,95 @@ body {
 }
 
 .faq-answer {
-  margin-top: var(--space-1);
+  margin-top: var(--s1);
 }
 
 .faq-answer p {
   margin: 0;
   font-size: 0.95em;
   line-height: 1.65;
-  color: var(--ink-2);
+  color: var(--soft);
 }
 
 .faq-answer p + p {
   margin-top: 0.75rem;
+}
+
+/* responsive <=768 */
+@media (max-width: 768px) {
+  .donation {
+    max-width: 100%;
+  }
+
+  .donation-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .donation-col-turkey {
+    order: 2;
+    border-right: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .donation-col-us {
+    order: 1;
+  }
+
+  .donation-iban {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
+
+/* responsive <=520 */
+@media (max-width: 520px) {
+  .page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .manifesto,
+  .manifesto p {
+    white-space: normal;
+  }
+
+  .hero-dershane {
+    font-size: max(5.5rem, 18vw);
+  }
+
+  .hero-aciyoruz {
+    font-size: max(3.2rem, 12vw);
+  }
+
+  .hero-boston {
+    font-size: max(1.6rem, 7vw);
+  }
+
+  .raised-amount {
+    flex-direction: column;
+    gap: var(--s2);
+  }
+
+  .donation-qr {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-aciyoruz .swap-word {
+    animation: none;
+  }
+
+  .hero-aciyoruz .swap-from {
+    display: none;
+    opacity: 0;
+  }
+
+  .hero-aciyoruz .swap-to {
+    opacity: 1;
+  }
 }
