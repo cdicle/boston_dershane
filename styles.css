@@ -312,7 +312,7 @@ body {
 
 .donation-iban {
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
-  font-size: 0.85em;
+  font-size: 0.9em;
   letter-spacing: 0.02em;
   padding: 0.35rem 0.5rem;
   background: rgba(0, 0, 0, 0.04);
