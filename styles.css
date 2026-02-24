@@ -254,7 +254,9 @@ body {
   flex-direction: column;
   gap: var(--space-2);
   width: 100%;
-  max-width: min(100%, 36rem);
+  max-width: clamp(720px, 80vw, 860px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .donation-title {
@@ -312,11 +314,14 @@ body {
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
   font-size: 0.85em;
   letter-spacing: 0.02em;
-  padding: 0.4rem 0.6rem;
+  padding: 0.35rem 0.5rem;
   background: rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   display: block;
-  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
   color: var(--text);
 }
 
@@ -357,6 +362,10 @@ body {
 
 /* Mobile: stack, US first then Turkey */
 @media (max-width: 768px) {
+  .donation {
+    max-width: 100%;
+  }
+
   .donation-card {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -370,6 +379,12 @@ body {
 
   .donation-col-us {
     order: 1;
+  }
+
+  .donation-iban {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 }
 
