@@ -138,10 +138,23 @@ body {
 @media (max-width: 480px) {
   .hero {
     padding-top: var(--space-3);
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    padding-left: 14px;
+    padding-right: 14px;
+    max-width: 100%;
   }
-  .hero-boston { line-height: 0.95; }
-  .hero-dershane { line-height: 0.85; }
-  .hero-aciyoruz { line-height: 0.95; }
+  .hero-boston {
+    font-size: clamp(1.9rem, 5.8vw, 3.5rem);
+    line-height: 0.95;
+  }
+  .hero-dershane {
+    font-size: clamp(4.2rem, 15.4vw, 13.2rem);
+    line-height: 0.9;
+  }
+  .hero-aciyoruz {
+    line-height: 0.95;
+  }
 }
 
 /* ----- Typography utilities ----- */
