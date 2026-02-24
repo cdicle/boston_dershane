@@ -71,12 +71,47 @@ body {
 }
 
 .hero-aciyoruz {
+  position: relative;
   text-align: right;
+  white-space: nowrap;
   font-size: clamp(3.2rem, 8vw, 6.2rem);
   line-height: 0.9;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: -0.15em 0 0 0;
+}
+
+/* Overlay both words in the same box so right edge is identical */
+.hero-aciyoruz .swap-word {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  animation: swapFade 6s ease-in-out infinite;
+}
+
+/* The visible baseline word still defines height */
+.hero-aciyoruz::before {
+  content: "açıyoruz";
+  visibility: hidden;
+  display: block;
+}
+
+.hero-aciyoruz .swap-from {
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+@keyframes swapFade {
+  0%, 40%   { opacity: 1; }
+  50%, 90%  { opacity: 0; }
+  100%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aciyoruz .swap-word { animation: none; }
+  .hero-aciyoruz .swap-from { display: none; opacity: 0; }
+  .hero-aciyoruz .swap-to   { opacity: 1; }
 }
 
 /* ----- Manifesto ----- */
