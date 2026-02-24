@@ -248,14 +248,16 @@ body {
   letter-spacing: 0;
 }
 
-.cta {
+/* ----- Donation: Turkey (IBAN) + US (Zelle) ----- */
+.donation {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: min(100%, 36rem);
 }
 
-.cta-text {
+.donation-title {
   margin: 0;
   font-size: 0.75rem;
   font-weight: 500;
@@ -263,29 +265,112 @@ body {
   text-align: center;
 }
 
-.cta-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+.donation-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--ink-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.cta-qr {
+.donation-col {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.donation-col-header {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.donation-org {
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.donation-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.donation-label {
+  font-size: 0.8em;
+  color: var(--ink-2);
+}
+
+.donation-iban {
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.6rem;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  display: block;
+  word-break: break-all;
+  color: var(--text);
+}
+
+.donation-helper,
+.donation-note {
+  margin: 0;
+  font-size: 0.8em;
+  color: var(--ink-muted);
+}
+
+.donation-row-qr {
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.donation-qr {
   display: block;
   width: 100px;
   height: 100px;
   object-fit: contain;
 }
 
-.cta-url {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+.donation-url {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
 }
 
-.cta-url:hover {
+.donation-url:hover {
   text-decoration: underline;
+}
+
+/* Vertical divider between columns */
+.donation-col-turkey {
+  border-right: 1px solid var(--ink-border);
+}
+
+/* Mobile: stack, US first then Turkey */
+@media (max-width: 768px) {
+  .donation-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .donation-col-turkey {
+    order: 2;
+    border-right: none;
+    border-top: 1px solid var(--ink-border);
+  }
+
+  .donation-col-us {
+    order: 1;
+  }
 }
 
 /* ----- Responsive ----- */
@@ -295,7 +380,7 @@ body {
     gap: var(--space-2);
   }
 
-  .cta-qr {
+  .donation-qr {
     width: 80px;
     height: 80px;
   }
